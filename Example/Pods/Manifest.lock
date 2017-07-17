@@ -1,0 +1,16 @@
+PODS:
+  - Bulletin (0.1.0)
+
+DEPENDENCIES:
+  - Bulletin (from `../`)
+
+EXTERNAL SOURCES:
+  Bulletin:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Bulletin: 7f115a3510de7f8642ed6b039b6ec320b9ce3782
+
+PODFILE CHECKSUM: 86f999a8d23261e57318875ed3a5aad5cd1bb02d
+
+COCOAPODS: 1.2.1
