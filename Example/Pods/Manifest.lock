@@ -1,5 +1,7 @@
 PODS:
-  - Bulletin (0.1.0)
+  - Bulletin (1.0.0):
+    - SnapKit (~> 3.0.0)
+  - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Bulletin (from `../`)
@@ -9,7 +11,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Bulletin: 7f115a3510de7f8642ed6b039b6ec320b9ce3782
+  Bulletin: 36cc1b6d054a36389990c4bcc625a8e74f05ee12
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
 PODFILE CHECKSUM: 86f999a8d23261e57318875ed3a5aad5cd1bb02d
 
