@@ -14,7 +14,7 @@ extension BulletinView {
     public static func notification() -> BulletinView {
         
         let bulletin = BulletinView()
-        bulletin.context = .overStatusBar
+        bulletin.level = .statusBar
         return bulletin
         
     }
@@ -42,7 +42,7 @@ extension BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .top
-        bulletin.context = .overStatusBar
+        bulletin.level = .statusBar
         bulletin.presentationAnimation.duration = 0.2
         bulletin.presentationAnimation.springDamping = 0
         bulletin.presentationAnimation.springVelocity = 0

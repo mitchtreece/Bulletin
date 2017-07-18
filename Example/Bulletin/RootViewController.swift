@@ -29,14 +29,9 @@ class RootViewController: UIViewController {
     fileprivate func bulletin(for row: BulletinRow) -> BulletinView {
         
         var bulletin: BulletinView!
-        
+                
         switch row {
         case .notification:
-            
-            bulletin = BulletinView.notification()
-            bulletin.style.roundedCornerRadius = 8
-            bulletin.style.shadowRadius = 10
-            bulletin.style.shadowAlpha = 0.3
             
             let view = NotificationView()
             view.iconImageView.image = #imageLiteral(resourceName: "app_icon")
@@ -44,29 +39,26 @@ class RootViewController: UIViewController {
             view.timeLabel.text = "now"
             view.titleLabel.text = "Trending on r/Tech"
             view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12."
-            bulletin.contentView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(0)
-            }
+            
+            bulletin = BulletinView.notification()
+            bulletin.style.roundedCornerRadius = 8
+            bulletin.style.shadowRadius = 10
+            bulletin.style.shadowAlpha = 0.3
+            bulletin.embed(content: view)
             
         case .banner:
-            
-            bulletin = BulletinView.banner()
-            bulletin.style.statusBar = .lightContent
             
             let view = BannerView()
             view.iconImageView.image = #imageLiteral(resourceName: "app_icon")
             view.titleLabel.text = "John Smith"
             view.timeLabel.text = "now"
             view.messageLabel.text = "Hey, do you want to grab lunch later? I have an early afternoon meeting, but after that I'm free! 🍔🌮🍕"
-            bulletin.contentView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(0)
-            }
+            
+            bulletin = BulletinView.banner()
+            bulletin.style.statusBar = .lightContent
+            bulletin.embed(content: view)
             
         case .statusBar:
-            
-            bulletin = BulletinView.statusBar()
             
             let view = UILabel()
             view.backgroundColor = UIColor.white
@@ -74,50 +66,37 @@ class RootViewController: UIViewController {
             view.textAlignment = .center
             view.textColor = UIColor.black
             view.font = UIFont.boldSystemFont(ofSize: 10)
-            bulletin.contentView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(0)
-                make.height.equalTo(20)
-            }
+            
+            bulletin = BulletinView.statusBar()
+            bulletin.embed(content: view, usingStrictHeight: 20)
             
         case .alert:
-            
-            bulletin = BulletinView.alert()
-            bulletin.style.isBackgroundDismissEnabled = false
             
             let view = AlertView()
             view.titleLabel.text = "Alert"
             view.messageLabel.text = "This is an alert. It's a little boring, but it gets the job done. 😴"
             view.button.setTitle("Okay", for: .normal)
             view.delegate = self
-            bulletin.contentView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(0)
-            }
+            
+            bulletin = BulletinView.alert()
+            bulletin.style.isBackgroundDismissEnabled = false
+            bulletin.embed(content: view)
             
         case .hud:
             
+            let view = HudView()
+            
             bulletin = BulletinView.hud()
             bulletin.duration = .limit(2)
-            
-            let view = HudView()
-            bulletin.contentView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(0)
-                make.height.equalTo(view.snp.width)
-            }
+            bulletin.snp_embed(content: view, usingStrictHeightConstraint: view.snp.width)
             
         case .sheet:
             
-            bulletin = BulletinView.sheet()
-            
             let view = UIView()
             view.backgroundColor = UIColor.red
-            bulletin.contentView.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.edges.equalTo(0)
-                make.height.equalTo(200)
-            }
+            
+            bulletin = BulletinView.sheet()
+            bulletin.embed(content: bulletin, usingStrictHeight: 200)
             
         }
         

@@ -43,7 +43,7 @@ internal class BulletinManager {
             }
             else {
                 
-                bulletin.delegate = self
+                bulletin._delegate = self
                 bulletin.soundEffectPlayer?.play()
                 bulletin.tapticFeedback(for: bulletin.taptics.presentation)
                 
@@ -52,7 +52,7 @@ internal class BulletinManager {
                 _self.animateBulletinIn(bulletin)
                 
                 // Needs to be called after animateBulletinIn() so frame is set correctly
-                bulletin.interactionDelegate?.bulletinViewWillAppear?(bulletin)
+                bulletin.appearanceDelegate?.bulletinViewWillAppear(bulletin)
                 
                 var duration: TimeInterval = 0
                 if case .limit(let time) = bulletin.duration {
@@ -76,7 +76,7 @@ internal class BulletinManager {
         timer?.invalidate()
         timer = nil
         
-        cbv.interactionDelegate?.bulletinViewWillDisappear?(cbv)
+        cbv.appearanceDelegate?.bulletinViewWillDisappear(cbv)
         animateCurrentBulletinOut(withDuration: duration, damping: damping, velocity: velocity, completion: completion)
         
     }
@@ -92,7 +92,7 @@ internal class BulletinManager {
                 
         bulletinWindow = BulletinWindow()
         bulletinWindow!.backgroundColor = UIColor.clear
-        bulletinWindow!.windowLevel = (bulletin.context == .overStatusBar) ? (UIWindowLevelStatusBar + 1) : UIWindowLevelNormal
+        bulletinWindow!.windowLevel = bulletin.level.rawValue
         bulletinWindow!.isHidden = false
         
         bulletinViewController = BulletinViewController()
@@ -130,7 +130,7 @@ internal class BulletinManager {
             let bulletin = info["bulletin"] as? BulletinView else { return }
         
         dismissCurrentBulletin()
-        bulletin.interactionDelegate?.bulletinViewWasAutomaticallyDismissed?(bulletin)
+        bulletin.appearanceDelegate?.bulletinViewWasAutomaticallyDismissed(bulletin)
         
     }
     
@@ -164,13 +164,13 @@ extension BulletinManager: BulletinViewDelegate {
         if bulletin.position == .top && (translation.y <= threshold || velocity.y <= -1200) {
             
             dismissCurrentBulletin(velocity: velocity.y)
-            bulletin.interactionDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
+            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed(bulletin)
             
         }
         else if bulletin.position == .bottom && (translation.y >= threshold || velocity.y >= 1200) {
             
             dismissCurrentBulletin(velocity: velocity.y)
-            bulletin.interactionDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
+            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed(bulletin)
             
         }
         else {

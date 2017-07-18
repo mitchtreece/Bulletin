@@ -167,9 +167,7 @@ internal class BulletinViewController: UIViewController {
             
         }
         else {
-            
-            // TODO: Update ToastView to support configurable dismissal settings
-            
+                        
             let shadowOffset = (bulletin.style.shadowRadius + bulletin.style.shadowOffset.height)
             let yOffset = (bulletin.bounds.height + bulletin.style.verticalEdgeOffset + shadowOffset)
             let ty = (bulletin.position == .bottom) ? yOffset : -yOffset
@@ -201,7 +199,7 @@ internal class BulletinViewController: UIViewController {
         
         guard let bulletin = bulletin, bulletin.style.isBackgroundDismissEnabled == true else { return }
         BulletinManager.shared.dismissCurrentBulletin()
-        bulletin.interactionDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
+        bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed(bulletin)
         
     }
     
