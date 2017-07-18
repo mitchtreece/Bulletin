@@ -496,8 +496,9 @@ public class BulletinView: UIView {
     // MARK: Public
     
     /**
-     Embeds a content view into the bulletin using an optional height.
-     If no height is provided, the content view's intrinsic size will be used.
+     Embeds a content view into the bulletin.
+     - parameter content: The content view to embed.
+     - parameter height: An optional height for the content view. If no height is provided, the content view's intrinsic size will be used.
      */
     public func embed(content: UIView, usingStrictHeight height: CGFloat? = nil) {
         
@@ -515,7 +516,8 @@ public class BulletinView: UIView {
     }
     
     /**
-     Presents the bulletin with an optional delay.
+     Presents the bulletin.
+     - parameter delay: The ammount of time (in seconds) to delay the bulletin's presentation. Defaults to `0`.
      */
     public func present(after delay: TimeInterval = 0) {
         

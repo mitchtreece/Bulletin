@@ -25,7 +25,7 @@ internal class BulletinManager {
         //
     }
     
-    internal func present(_ bulletin: BulletinView, after delay: TimeInterval = 0) {
+    func present(_ bulletin: BulletinView, after delay: TimeInterval = 0) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             
@@ -69,7 +69,7 @@ internal class BulletinManager {
         
     }
     
-    internal func dismissCurrentBulletin(withDuration duration: TimeInterval = 0.4, damping: CGFloat = 0.8, velocity: CGFloat = 0.3, completion: (()->())? = nil) {
+    func dismissCurrentBulletin(withDuration duration: TimeInterval = 0.4, damping: CGFloat = 0.8, velocity: CGFloat = 0.3, completion: (()->())? = nil) {
         
         guard let cbv = bulletinView else { return }
         
@@ -81,7 +81,7 @@ internal class BulletinManager {
         
     }
     
-    internal func dismiss(_ bulletin: BulletinView) {
+    func dismiss(_ bulletin: BulletinView) {
         
         guard let cbv = bulletinView, cbv == bulletin else { return }
         dismissCurrentBulletin()

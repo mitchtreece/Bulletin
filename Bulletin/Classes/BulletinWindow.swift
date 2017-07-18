@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BulletinWindow: UIWindow {
+internal class BulletinWindow: UIWindow {
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         

@@ -11,7 +11,9 @@ import SnapKit
 public extension BulletinView {
     
     /**
-     Embeds a content view into the bulletin using a `ConstraintItem` for it's height.
+     Embeds a content view into the bulletin.
+     - parameter content: The content view to embed.
+     - parameter constraint: The height constraint to use.
      */
     public func snp_embed(content: UIView, usingStrictHeightConstraint constraint: ConstraintItem) {
         

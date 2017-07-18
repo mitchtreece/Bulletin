@@ -45,7 +45,7 @@ class RootViewController: UIViewController {
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
             bulletin.embed(content: view)
-            
+                        
         case .banner:
             
             let view = BannerView()
