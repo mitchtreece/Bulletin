@@ -85,18 +85,18 @@ class RootViewController: UIViewController {
         case .hud:
             
             let view = HudView()
-            
             bulletin = BulletinView.hud()
             bulletin.duration = .limit(2)
             bulletin.snp_embed(content: view, usingStrictHeightConstraint: view.snp.width)
             
         case .sheet:
             
-            let view = UIView()
-            view.backgroundColor = UIColor.red
-            
+            let view = SheetView()
             bulletin = BulletinView.sheet()
-            bulletin.embed(content: bulletin, usingStrictHeight: 200)
+            bulletin.style.verticalEdgeOffset = 14
+            bulletin.style.horizontalEdgeOffset = 14
+            bulletin.style.shadowAlpha = 0
+            bulletin.embed(content: view)
             
         }
         

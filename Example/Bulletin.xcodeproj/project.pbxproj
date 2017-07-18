@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		26705D981F1DD3AE0050FCDB /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705D971F1DD3AE0050FCDB /* HudView.swift */; };
 		26705D9A1F1DDD770050FCDB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705D991F1DDD770050FCDB /* NavigationController.swift */; };
+		26705DA61F1EBF5E0050FCDB /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705DA51F1EBF5E0050FCDB /* SheetView.swift */; };
 		26CB11F21F1D624200E4951C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11F11F1D624200E4951C /* RootViewController.swift */; };
 		26CB120A1F1D8CC200E4951C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB12091F1D8CC200E4951C /* NotificationView.swift */; };
 		26CB120C1F1DBAAE00E4951C /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB120B1F1DBAAE00E4951C /* BannerView.swift */; };
@@ -36,6 +37,7 @@
 		02D721417FDFE6E74EB7C53D /* Bulletin.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Bulletin.podspec; path = ../Bulletin.podspec; sourceTree = "<group>"; };
 		26705D971F1DD3AE0050FCDB /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		26705D991F1DDD770050FCDB /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		26705DA51F1EBF5E0050FCDB /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		26CB11F11F1D624200E4951C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		26CB12091F1D8CC200E4951C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		26CB120B1F1DBAAE00E4951C /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				26CB120B1F1DBAAE00E4951C /* BannerView.swift */,
 				26CB120D1F1DC26700E4951C /* AlertView.swift */,
 				26705D971F1DD3AE0050FCDB /* HudView.swift */,
+				26705DA51F1EBF5E0050FCDB /* SheetView.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for Bulletin";
@@ -384,6 +387,7 @@
 				26CB11F21F1D624200E4951C /* RootViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				26705D9A1F1DDD770050FCDB /* NavigationController.swift in Sources */,
+				26705DA61F1EBF5E0050FCDB /* SheetView.swift in Sources */,
 				26CB120A1F1D8CC200E4951C /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

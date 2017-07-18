@@ -79,7 +79,7 @@ extension BulletinView {
         let bulletin = BulletinView()
         bulletin.position = .center
         bulletin.duration = .forever
-        bulletin.style.backgroundEffect = .darken(alpha: 0.4)
+        bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.horizontalEdgeOffset = 44
         bulletin.style.roundedCornerRadius = 14
         return bulletin
@@ -95,7 +95,7 @@ extension BulletinView {
         let bulletin = BulletinView()
         bulletin.position = .center
         bulletin.duration = .forever
-        bulletin.style.backgroundEffect = .darken(alpha: 0.4)
+        bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.horizontalEdgeOffset = (UIScreen.main.bounds.width / 3)
         bulletin.style.roundedCornerRadius = 14
         bulletin.style.isBackgroundDismissEnabled = false
@@ -112,7 +112,7 @@ extension BulletinView {
         let bulletin = BulletinView()
         bulletin.position = .bottom
         bulletin.duration = .forever
-        bulletin.style.backgroundEffect = .darken(alpha: 0.4)
+        bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.verticalEdgeOffset = 8
         bulletin.style.isStretchingEnabled = false
         bulletin.style.isAnimatedTouchEnabled = false
