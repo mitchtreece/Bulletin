@@ -20,10 +20,27 @@ internal protocol BulletinViewDelegate: class {
  Protocol that provides `BulletinView` appearance information.
  */
 public protocol BulletinViewAppearanceDelegate: class {
+    
+    /**
+     Called when a bulletin is about to be presented.
+     */
     func bulletinViewWillAppear(_ bulletin: BulletinView)
+    
+    /**
+     Called when a bulletin is about to be dismissed.
+     */
     func bulletinViewWillDisappear(_ bulletin: BulletinView)
+    
+    /**
+     Called when a bulletin was dismissed automatically.
+     */
     func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
+    
+    /**
+     Called when a bulletin was dismissed interactively (i.e. swiping away, tapping background effect view).
+     */
     func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
+    
 }
 
 public extension BulletinViewAppearanceDelegate {
@@ -404,19 +421,6 @@ public class BulletinView: UIView {
         
     }
     
-    public convenience init(view: UIView) {
-        
-        // Should use CGRect.zero, but for some reason not
-        // setting an initial width/height results in a bad frame
-        
-        self.init(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        self.contentView.addSubview(view)
-        view.snp.makeConstraints { (make) in
-            make.edges.equalTo(0)
-        }
-        
-    }
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -491,6 +495,10 @@ public class BulletinView: UIView {
     
     // MARK: Public
     
+    /**
+     Embeds a content view into the bulletin using an optional height.
+     If no height is provided, the content view's intrinsic size will be used.
+     */
     public func embed(content: UIView, usingStrictHeight height: CGFloat? = nil) {
         
         contentView.addSubview(content)
@@ -506,12 +514,18 @@ public class BulletinView: UIView {
         
     }
     
+    /**
+     Presents the bulletin with an optional delay.
+     */
     public func present(after delay: TimeInterval = 0) {
         
         BulletinManager.shared.present(self, after: delay)
         
     }
     
+    /**
+     Dismisses the bulletin immediately.
+     */
     public func dismiss() {
         
         BulletinManager.shared.dismiss(self)

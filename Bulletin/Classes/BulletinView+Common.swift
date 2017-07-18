@@ -11,6 +11,10 @@ import SnapKit
 
 extension BulletinView {
     
+    /**
+     A notification styled bulletin.
+     - returns: A `BulletinView` instance.
+     */
     public static func notification() -> BulletinView {
         
         let bulletin = BulletinView()
@@ -19,6 +23,11 @@ extension BulletinView {
         
     }
     
+    /**
+     A banner styled bulletin.
+     - parameter sticky: Boolean indicating whether the bulletin should be automatically dismissed. Defaults to false.
+     - returns: A `BulletinView` instance.
+     */
     public static func banner(sticky: Bool = false) -> BulletinView {
         
         let bulletin = BulletinView()
@@ -38,6 +47,10 @@ extension BulletinView {
         
     }
     
+    /**
+     A status bar styled bulletin. This is usually used for presenting a "toast" over the status bar.
+     - returns: A `BulletinView` instance.
+     */
     public static func statusBar() -> BulletinView {
         
         let bulletin = BulletinView()
@@ -57,6 +70,10 @@ extension BulletinView {
         
     }
     
+    /**
+     An alert styled bulletin.
+     - returns: A `BulletinView` instance.
+     */
     public static func alert() -> BulletinView {
         
         let bulletin = BulletinView()
@@ -69,6 +86,10 @@ extension BulletinView {
         
     }
     
+    /**
+     A HUD styled bulletin.
+     - returns: A `BulletinView` instance.
+     */
     public static func hud() -> BulletinView {
         
         let bulletin = BulletinView()
@@ -82,6 +103,10 @@ extension BulletinView {
         
     }
     
+    /**
+     A sheet styled bulletin.
+     - returns: A `BulletinView` instance.
+     */
     public static func sheet() -> BulletinView {
         
         let bulletin = BulletinView()
