@@ -41,7 +41,7 @@ public class StyleSettings {
     
     internal weak var shadowLayer: CAShapeLayer?
     
-    public var statusBar: UIStatusBarStyle = .default
+    public var statusBar: UIStatusBarStyle?
     public var backgroundEffect: BackgroundEffect = .none
     public var horizontalEdgeOffset: CGFloat = 8
     public var verticalEdgeOffset: CGFloat = 24

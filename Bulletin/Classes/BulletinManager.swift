@@ -14,7 +14,6 @@ internal class BulletinManager {
     
     static let shared = BulletinManager()
     
-    private var previousStatusBarStyle: UIStatusBarStyle?
     private var bulletinWindow: BulletinWindow?
     private var bulletinViewController: BulletinViewController?
     private var bulletinView: BulletinView?
@@ -90,10 +89,7 @@ internal class BulletinManager {
     }
     
     private func animateBulletinIn(_ bulletin: BulletinView) {
-        
-        let window = UIApplication.shared.keyWindow!
-        previousStatusBarStyle = window.rootViewController?.preferredStatusBarStyle
-        
+                
         bulletinWindow = BulletinWindow()
         bulletinWindow!.backgroundColor = UIColor.clear
         bulletinWindow!.windowLevel = (bulletin.context == .overStatusBar) ? (UIWindowLevelStatusBar + 1) : UIWindowLevelNormal
@@ -101,17 +97,14 @@ internal class BulletinManager {
         
         bulletinViewController = BulletinViewController()
         bulletinViewController!.bulletin = bulletin
-        bulletinViewController!.isStatusBarHidden = window.rootViewController?.prefersStatusBarHidden ?? false
+        bulletinViewController!.previousStatusBarStyle = UIApplication.shared.currentStatusBarAppearance.style
+        bulletinViewController!.isStatusBarHidden = UIApplication.shared.currentStatusBarAppearance.hidden
         bulletinWindow!.rootViewController = bulletinViewController
         bulletinViewController!.animateIn()
-        bulletinViewController!.setNeedsStatusBarAppearanceUpdate()
         
     }
     
     fileprivate func animateCurrentBulletinOut(withDuration duration: TimeInterval, damping: CGFloat, velocity: CGFloat, completion: (()->())?) {
-        
-        bulletinViewController?.statusBarStyle = previousStatusBarStyle
-        bulletinViewController?.setNeedsStatusBarAppearanceUpdate()
         
         bulletinViewController?.animateOut(withDuration: duration, damping: damping, velocity: velocity, completion: {
             

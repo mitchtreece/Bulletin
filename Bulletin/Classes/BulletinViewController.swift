@@ -14,15 +14,21 @@ internal class BulletinViewController: UIViewController {
     private var blurEffectView: UIVisualEffectView?
     
     var bulletin: BulletinView?
-    var statusBarStyle: UIStatusBarStyle?
+    
+    var previousStatusBarStyle: UIStatusBarStyle?
     var isStatusBarHidden: Bool = false
+    
+    private var statusBarStyleOverride: UIStatusBarStyle?
     
     override var prefersStatusBarHidden: Bool {
         return isStatusBarHidden
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return (statusBarStyle != nil) ? statusBarStyle! : (bulletin?.style.statusBar ?? .default)
+        
+        guard statusBarStyleOverride == nil else { return statusBarStyleOverride! }
+        return bulletin?.style.statusBar ?? previousStatusBarStyle ?? .default
+        
     }
     
     override func viewDidLoad() {
@@ -134,6 +140,9 @@ internal class BulletinViewController: UIViewController {
         
         guard let bulletin = bulletin else { return }
         
+        statusBarStyleOverride = previousStatusBarStyle ?? .default
+        setNeedsStatusBarAppearanceUpdate()
+        
         if bulletin.position == .center {
             
             UIView.animate(withDuration: 0.25, delay: 0, options: [.beginFromCurrentState], animations: {
@@ -161,7 +170,8 @@ internal class BulletinViewController: UIViewController {
             
             // TODO: Update ToastView to support configurable dismissal settings
             
-            let yOffset = (bulletin.bounds.height + bulletin.style.verticalEdgeOffset)
+            let shadowOffset = (bulletin.style.shadowRadius + bulletin.style.shadowOffset.height)
+            let yOffset = (bulletin.bounds.height + bulletin.style.verticalEdgeOffset + shadowOffset)
             let ty = (bulletin.position == .bottom) ? yOffset : -yOffset
             let normalizedVelocity = ((-1 * velocity) / ty)
             

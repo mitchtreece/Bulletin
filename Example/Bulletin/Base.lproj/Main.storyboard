@@ -12,10 +12,14 @@
         <!--Navigation Controller-->
         <scene sceneID="TfM-nJ-itN">
             <objects>
-                <navigationController id="U9E-Pu-EH4" sceneMemberID="viewController">
+                <navigationController id="U9E-Pu-EH4" customClass="NavigationController" customModule="Bulletin_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1bG-dc-Y0j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.30588235289999999" green="0.52549019610000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="J3o-XJ-ikK" kind="relationship" relationship="rootViewController" id="Bqg-As-A1R"/>
@@ -29,10 +33,10 @@
         <scene sceneID="Hkw-bm-5FS">
             <objects>
                 <viewController storyboardIdentifier="RootViewController" id="J3o-XJ-ikK" customClass="RootViewController" customModule="Bulletin_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="T14-xv-UVx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="T14-xv-UVx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
                             <outlet property="dataSource" destination="J3o-XJ-ikK" id="Rvp-80-aH5"/>
                             <outlet property="delegate" destination="J3o-XJ-ikK" id="IH8-GU-HBr"/>

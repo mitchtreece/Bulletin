@@ -13,7 +13,9 @@ extension BulletinView {
     
     public static func notification() -> BulletinView {
         
-        return BulletinView()
+        let bulletin = BulletinView()
+        bulletin.context = .overStatusBar
+        return bulletin
         
     }
     
@@ -62,7 +64,20 @@ extension BulletinView {
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.4)
         bulletin.style.horizontalEdgeOffset = 44
-        bulletin.style.roundedCornerRadius = 10
+        bulletin.style.roundedCornerRadius = 14
+        return bulletin
+        
+    }
+    
+    public static func hud() -> BulletinView {
+        
+        let bulletin = BulletinView()
+        bulletin.position = .center
+        bulletin.duration = .forever
+        bulletin.style.backgroundEffect = .darken(alpha: 0.4)
+        bulletin.style.horizontalEdgeOffset = (UIScreen.main.bounds.width / 3)
+        bulletin.style.roundedCornerRadius = 14
+        bulletin.style.isBackgroundDismissEnabled = false
         return bulletin
         
     }

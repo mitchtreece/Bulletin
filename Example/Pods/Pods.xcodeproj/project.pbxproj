@@ -12,6 +12,7 @@
 		16095F827E8C7EB07239A3FD567CC3D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512147FDA1939417BB42A1771EA830F9 /* Foundation.framework */; };
 		1F8B1E50BC69C5565B0ED099D9603DEE /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BDEFD46348EE8C41DE053AEDBFD1B /* ConstraintOffsetTarget.swift */; };
 		2525FF7647CB9FC99162FCB7C8094010 /* Pods-Bulletin_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CC1F2B87E300E83362535A65ECD4F9 /* Pods-Bulletin_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26705D9E1F1DE1F70050FCDB /* UIApplication+Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705D9D1F1DE1F70050FCDB /* UIApplication+Bulletin.swift */; };
 		26CB11E71F1D40D100E4951C /* BulletinView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */; };
 		26CB11E81F1D40D100E4951C /* BulletinWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11E31F1D40D100E4951C /* BulletinWindow.swift */; };
 		26CB11E91F1D40D100E4951C /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11E41F1D40D100E4951C /* BulletinViewController.swift */; };
@@ -96,6 +97,7 @@
 		1F2B728DCF7E9F88008827314C2AE823 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		212E2771F1CD458D21A0FB3CA1C914F3 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		261BC3C65CE6EBBED920977848212F6F /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
+		26705D9D1F1DE1F70050FCDB /* UIApplication+Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Bulletin.swift"; sourceTree = "<group>"; };
 		26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BulletinView+Common.swift"; sourceTree = "<group>"; };
 		26CB11E31F1D40D100E4951C /* BulletinWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinWindow.swift; sourceTree = "<group>"; };
 		26CB11E41F1D40D100E4951C /* BulletinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
@@ -252,9 +254,10 @@
 			children = (
 				26CB11E51F1D40D100E4951C /* BulletinManager.swift */,
 				26CB11E61F1D40D100E4951C /* BulletinView.swift */,
-				26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */,
 				26CB11E41F1D40D100E4951C /* BulletinViewController.swift */,
 				26CB11E31F1D40D100E4951C /* BulletinWindow.swift */,
+				26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */,
+				26705D9D1F1DE1F70050FCDB /* UIApplication+Bulletin.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26705D9E1F1DE1F70050FCDB /* UIApplication+Bulletin.swift in Sources */,
 				26CB11EA1F1D40D100E4951C /* BulletinManager.swift in Sources */,
 				AC3C60C3B9A73917819461511E8E6DE6 /* Bulletin-dummy.m in Sources */,
 				26CB11E71F1D40D100E4951C /* BulletinView+Common.swift in Sources */,
