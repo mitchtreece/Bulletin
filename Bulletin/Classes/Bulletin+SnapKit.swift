@@ -3,6 +3,7 @@
 //  Bulletin
 //
 //  Created by Mitch Treece on 7/18/17.
+//  Copyright © 2017 Mitch Treece. All rights reserved.
 //
 
 import Foundation
