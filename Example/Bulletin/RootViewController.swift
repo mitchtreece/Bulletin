@@ -92,6 +92,8 @@ class RootViewController: UIViewController {
         case .sheet:
             
             let view = SheetView()
+            view.delegate = self
+            
             bulletin = BulletinView.sheet()
             bulletin.style.verticalEdgeOffset = 14
             bulletin.style.horizontalEdgeOffset = 14
@@ -223,7 +225,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
             case .blur:
                 
                 let bulletin = self.bulletin(for: .sheet)
-                bulletin.style.backgroundEffect = .blur(style: .light)
+                bulletin.style.backgroundEffect = .blur(style: .dark)
                 self.bulletin = bulletin
                 bulletin.present()
                 
@@ -238,6 +240,17 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
 extension RootViewController: AlertViewDelegate {
     
     func alertViewDidTapButton(_ alert: AlertView) {
+        
+        bulletin?.dismiss()
+        bulletin = nil
+        
+    }
+    
+}
+
+extension RootViewController: SheetViewDelegate {
+    
+    func sheetViewDidTapButton(_ sheet: SheetView) {
         
         bulletin?.dismiss()
         bulletin = nil
