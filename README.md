@@ -10,12 +10,12 @@ Bulletin is a customizable alert library that makes it incredibly easy to build 
 
 <table>
   <tr>
-    <td><img src="Resources/notification.gif"/></td>
-    <td><img src="Resources/banner.gif"/></td>
-    <td><img src="Resources/toast.gif"/></td>
-    <td><img src="Resources/alert.gif"/></td>
-    <td><img src="Resources/hud.gif"/></td>
-    <td><img src="Resources/sheet.gif"/></td>
+    <td style="border-color:transparent"><img src="Resources/notification.gif"/></td>
+    <td style="border-color:transparent"><img src="Resources/banner.gif"/></td>
+    <td style="border-color:transparent"><img src="Resources/toast.gif"/></td>
+    <td style="border-color:transparent"><img src="Resources/alert.gif"/></td>
+    <td style="border-color:transparent"><img src="Resources/hud.gif"/></td>
+    <td style="border-color:transparent"><img src="Resources/sheet.gif"/></td>
   </tr>
 </table>
 
