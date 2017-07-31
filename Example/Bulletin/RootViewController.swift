@@ -35,10 +35,10 @@ class RootViewController: UIViewController {
             
             let view = NotificationView()
             view.iconImageView.image = #imageLiteral(resourceName: "app_icon")
-            view.iconTitleLabel.text = "REDDIT"
+            view.iconTitleLabel.text = "BULLETIN"
             view.timeLabel.text = "now"
-            view.titleLabel.text = "Trending on r/Tech"
-            view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12."
+            view.titleLabel.text = "Trending News"
+            view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12"
             
             bulletin = BulletinView.notification()
             bulletin.style.roundedCornerRadius = 8
@@ -50,9 +50,9 @@ class RootViewController: UIViewController {
             
             let view = BannerView()
             view.iconImageView.image = #imageLiteral(resourceName: "app_icon")
-            view.titleLabel.text = "John Smith"
+            view.titleLabel.text = "The Dude"
             view.timeLabel.text = "now"
-            view.messageLabel.text = "Hey, do you want to grab lunch later? I have an early afternoon meeting, but after that I'm free! 🍔🌮🍕"
+            view.messageLabel.text = "I’m the Dude, so that’s what you call me. That or, uh His Dudeness, or uh Duder, or El Duderino, if you’re not into the whole brevity thing. 😎"
             
             bulletin = BulletinView.banner()
             bulletin.style.statusBar = .lightContent
@@ -61,7 +61,7 @@ class RootViewController: UIViewController {
         case .statusBar:
             
             let view = UILabel()
-            view.backgroundColor = UIColor.white
+            view.backgroundColor = UIColor.groupTableViewBackground
             view.text = "Mmmmmm toasty."
             view.textAlignment = .center
             view.textColor = UIColor.black

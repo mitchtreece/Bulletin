@@ -80,7 +80,7 @@ extension BulletinView {
         bulletin.position = .center
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-        bulletin.style.horizontalEdgeOffset = 44
+        bulletin.style.horizontalEdgeOffset = 50
         bulletin.style.roundedCornerRadius = 14
         return bulletin
         
