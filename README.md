@@ -8,12 +8,16 @@
 ## Overview
 Bulletin is a customizable alert library that makes it incredibly easy to build highly-stylized alerts for your app.
 
-![Example-Notification](Resources/notification.gif)
-![Example-Banner](Resources/banner.gif)
-![Example-Toast](Resources/toast.gif)
-![Example-Alert](Resources/alert.gif)
-![Example-HUD](Resources/hud.gif)
-![Example-Sheet](Resources/sheet.gif)
+<table>
+  <tr>
+    <td><img src="Resources/notification.gif"/></td>
+    <td><img src="Resources/banner.gif"/></td>
+    <td><img src="Resources/toast.gif"/></td>
+    <td><img src="Resources/alert.gif"/></td>
+    <td><img src="Resources/hud.gif"/></td>
+    <td><img src="Resources/sheet.gif"/></td>
+  </tr>
+</table>
 
 ## Installation
 ### CocoaPods
