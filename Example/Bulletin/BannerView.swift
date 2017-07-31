@@ -61,6 +61,8 @@ class BannerView: UIView {
         iconImageView = UIImageView()
         iconImageView.backgroundColor = UIColor.clear
         iconImageView.contentMode = .scaleToFill
+        iconImageView.layer.cornerRadius = 6
+        iconImageView.clipsToBounds = true
         addSubview(iconImageView)
         iconImageView.snp.makeConstraints { (make) in
             make.top.equalTo(statusBarView.snp.bottom).offset(6)

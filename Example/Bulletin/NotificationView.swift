@@ -51,6 +51,8 @@ class NotificationView: UIView {
         iconImageView = UIImageView()
         iconImageView.backgroundColor = UIColor.clear
         iconImageView.contentMode = .scaleToFill
+        iconImageView.layer.cornerRadius = 4
+        iconImageView.clipsToBounds = true
         topContentView.addSubview(iconImageView)
         iconImageView.snp.makeConstraints { (make) in
             make.top.equalTo(8)

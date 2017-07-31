@@ -1,29 +1,114 @@
-# Bulletin
+![Bulletin](Resources/banner.png)
 
-[![CI Status](http://img.shields.io/travis/mitchtreece/Bulletin.svg?style=flat)](https://travis-ci.org/mitchtreece/Bulletin)
 [![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-[![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 [![Platform](https://img.shields.io/cocoapods/p/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
+[![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
 
-## Example
+## Overview
+Bulletin is a customizable alert library that makes it incredibly easy to build highly-stylized alerts for your app.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+Pictures go here
 
 ## Installation
+### CocoaPods
+Bulletin is integrated with CocoaPods!
 
-Bulletin is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+1. Add the following to your `Podfile`:
+```
+use_frameworks!
+pod 'Bulletin'
+```
+2. In your project directory, run `pod install`
+3. Import the `Bulletin` module wherever you need it
+4. Profit
 
-```ruby
-pod "Bulletin"
+### Manually
+You can also manually add the source files to your project.
+
+1. Clone this git repo
+2. Add all the Swift files in the `Bulletin/` subdirectory to your project
+3. Profit
+
+## The Basics
+The general flow of presenting a bulletin is as follows:
+
+```Swift
+let contentView = UIView()
+// Configure bulletin content view
+
+let bulletin = BulletinView()
+// Configure bulletin style
+
+bulletin.embed(content: contentView)
+bulletin.present()
 ```
 
-## Author
+You create a content view that later will be embedded into a containing `BulletinView` via it's `embed()` function. We then create a `BulletinView` and configure it's style to our liking, embed our content, and present the bulletin.
 
-mitchtreece, mitchtreece@me.com
+The `BulletinView` will use your view's intrinsic content size to determine it's on-screen height if it can; so make sure you have constraints setup properly! Instead, if you want to provide a static height for your content, use the following version of the `embed()` function:
 
-## License
+```Swift
+bulletin.embed(content: contentView, usingStrictHeight: 100)
+```
 
-Bulletin is available under the MIT license. See the LICENSE file for more info.
+## Bulletin Styles
+
+`BulletinView` has a ton of customization options; because of this, it includes pre-configured styles for the most common use cases.
+
+```Swift
+let bulletin = BulletinView.notification()
+let bulletin = BulletinView.banner(sticky: true)
+let bulletin = BulletinView.statusBar()
+let bulletin = BulletinView.alert()
+let bulletin = BulletinView.hud()
+let bulletin = BulletinView.sheet()
+```
+
+After creating a `BulletinView` with one of the above styles, simply embed your content & present the bulletin.
+
+## Customization
+
+Of course, you might want to go crazy and tweak everything to your liking. Here is an example of some of the various things you can change:
+
+```Swift
+let bulletin = BulletinView()
+
+// Basic options
+
+bulletin.position = .top
+bulletin.duration = .limit(5)
+bulletin.level = .default
+
+// Presentation Sound Effect
+
+bulletin.soundEffectUrl = URL(...)
+
+// Presentation Animation
+
+bulletin.presentationAnimation.duration = 0.4
+bulletin.presentationAnimation.springDamping = 0.7
+bulletin.presentationAnimation.springVelocity = 0.4
+
+// Style
+
+bulletin.style.statusBar = .lightContent
+bulletin.style.backgroundEffect = .darken(alpha: 0.5)
+bulletin.style.horizontalEdgeOffset = 8
+bulletin.style.verticalEdgeOffset = 24
+bulletin.style.roundedCorners = .allCorners
+bulletin.style.roundedCornerRadius = 4
+bulletin.style.shadowColor = UIColor.black
+bulletin.style.shadowOffset = CGSize(width: 0, height: 4)
+bulletin.style.shadowRadius = 4
+bulletin.style.shadowAlpha = 0.25
+bulletin.style.isBackgroundDismissEnabled = true
+
+// Taptics
+
+bulletin.taptics.presentation = .notification(.success)
+bulletin.taptics.action = .impact(.light)
+bulletin.taptics.snapping = .impact(.medium)
+```
+
+..and many more
