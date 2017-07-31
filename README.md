@@ -41,15 +41,13 @@ bulletin.embed(content: contentView)
 bulletin.present()
 ```
 
-You create a content view that later will be embedded into a containing `BulletinView` via it's `embed()` function. We then create a `BulletinView` and configure it's style to our liking, embed our content, and present the bulletin.
+You create a content view that later will be embedded into a containing `BulletinView`. We then create a `BulletinView` and configure it's style to our liking, embed our content, and present the bulletin.
 
-The `BulletinView` will use your view's intrinsic content size to determine it's on-screen height if it can; so make sure you have constraints setup properly! Alternatively, if you want to provide a static height for your content, use the following version of the `embed()` function:
+The `BulletinView` will use your view's intrinsic content size to determine it's on-screen height. So make sure you have constraints setup properly! Alternatively, if you want to provide a static height for your content, use the following version of the `embed()` function:
 
 ```Swift
 bulletin.embed(content: contentView, usingStrictHeight: 100)
 ```
-
-This will add height constraint to your content view with the provided value.
 
 ## Default Styles
 
@@ -62,10 +60,12 @@ This will add height constraint to your content view with the provided value.
 - hud
 - sheet
 
-A bulletin can be created with a default style like this:
+A bulletin can be created with one of these default styles like this:
 
 ```Swift
 let bulletin = BulletinView.notification()
+let bulletin = BulletinView.banner()
+...
 ```
 
 ## Customization
@@ -79,13 +79,9 @@ let bulletin = BulletinView()
 
 bulletin.position = .top
 bulletin.duration = .limit(5)
-bulletin.level = .default
-
-// Presentation Sound Effect
-
 bulletin.soundEffectUrl = URL(...)
 
-// Presentation Animation
+// Presentation
 
 bulletin.presentationAnimation.duration = 0.4
 bulletin.presentationAnimation.springDamping = 0.7
