@@ -35,41 +35,42 @@ The general flow of presenting a bulletin is as follows:
 
 ```Swift
 let contentView = UIView()
-// Configure bulletin content view
 
 let bulletin = BulletinView()
-// Configure bulletin style
-
 bulletin.embed(content: contentView)
 bulletin.present()
 ```
 
 You create a content view that later will be embedded into a containing `BulletinView` via it's `embed()` function. We then create a `BulletinView` and configure it's style to our liking, embed our content, and present the bulletin.
 
-The `BulletinView` will use your view's intrinsic content size to determine it's on-screen height if it can; so make sure you have constraints setup properly! Instead, if you want to provide a static height for your content, use the following version of the `embed()` function:
+The `BulletinView` will use your view's intrinsic content size to determine it's on-screen height if it can; so make sure you have constraints setup properly! Alternatively, if you want to provide a static height for your content, use the following version of the `embed()` function:
 
 ```Swift
 bulletin.embed(content: contentView, usingStrictHeight: 100)
 ```
 
-## Bulletin Styles
+This will add height constraint to your content view with the provided value.
 
-`BulletinView` has a ton of customization options; because of this, it includes pre-configured styles for the most common use cases.
+## Default Styles
+
+`BulletinView` has a ton of customization options; because of this, it includes pre-configured styles for the most common use cases. The current set of default styles include:
+
+- notification
+- banner
+- status bar (toast)
+- alert
+- hud
+- sheet
+
+A bulletin can be created with a default style like this:
 
 ```Swift
 let bulletin = BulletinView.notification()
-let bulletin = BulletinView.banner(sticky: true)
-let bulletin = BulletinView.statusBar()
-let bulletin = BulletinView.alert()
-let bulletin = BulletinView.hud()
-let bulletin = BulletinView.sheet()
 ```
-
-After creating a `BulletinView` with one of the above styles, simply embed your content & present the bulletin.
 
 ## Customization
 
-Of course, you might want to go crazy and tweak everything to your liking. Here is an example of some of the various things you can change:
+Of course, you might want to go crazy and tweak everything to your liking. Here is an example of some of the things you can change:
 
 ```Swift
 let bulletin = BulletinView()
@@ -112,3 +113,13 @@ bulletin.taptics.snapping = .impact(.medium)
 ```
 
 ..and many more
+
+For more information regarding specific configuration option usage, refer to the code documentation.
+
+## SnapKit
+
+[SnapKit](http://snapkit.io) is a wonderful library that helps ease the pain of working with programatic layout constraints. I use it daily, and you should too! Bulletin provides basic SnapKit integration via a specialized `snp_embed()` function that takes a SnapKit `ConstraintItem` instead of a strict height.
+
+```Swift
+bulletin.snp_embed(content: contentView, usingStrictHeightConstraint: anotherView.snp.height)
+```
