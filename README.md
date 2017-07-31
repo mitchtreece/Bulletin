@@ -119,6 +119,30 @@ bulletin.taptics.snapping = .impact(.medium)
 
 ..and many more. For more information regarding specific configuration option usage, refer to the code documentation.
 
+## Actions
+
+You might want to do something cool when someone taps on your bulletin. `BulletinView` has an optional `action` handler that does just that!
+
+```Swift
+let bulletin = BulletinView()
+bulletin.action = {
+    print("You tapped me!")
+}
+```
+
+When an action handler is invoked, it's bulletin will automatically be dismissed.
+
+## Interaction Delegate
+
+`BulletinView` also has an optional `interactionDelegate` that provides information about when & how a bulletin is presented/dismissed. The delegate includes the following functions:
+
+```Swift
+func bulletinViewWillAppear(_ bulletin: BulletinView)
+func bulletinViewWillDisappear(_ bulletin: BulletinView)
+func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
+func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
+```
+
 ## SnapKit
 
 [SnapKit](http://snapkit.io) is a wonderful library that helps ease the pain of working with programatic layout constraints. I use it daily, and you should too! Bulletin provides basic SnapKit integration via a specialized `snp_embed()` function that takes a SnapKit `ConstraintItem` instead of a strict height.
