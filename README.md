@@ -117,9 +117,7 @@ bulletin.taptics.action = .impact(.light)
 bulletin.taptics.snapping = .impact(.medium)
 ```
 
-..and many more
-
-For more information regarding specific configuration option usage, refer to the code documentation.
+..and many more. For more information regarding specific configuration option usage, refer to the code documentation.
 
 ## SnapKit
 
@@ -128,3 +126,7 @@ For more information regarding specific configuration option usage, refer to the
 ```Swift
 bulletin.snp_embed(content: contentView, usingStrictHeightConstraint: anotherView.snp.height)
 ```
+
+## Contributing
+
+Pull-requests are more than welcome. Bug fix? Feature? Open a PR and we'll get it merged in!
