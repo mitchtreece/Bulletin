@@ -199,7 +199,7 @@ internal class BulletinViewController: UIViewController {
         
         guard let bulletin = bulletin, bulletin.style.isBackgroundDismissEnabled == true else { return }
         BulletinManager.shared.dismissCurrentBulletin()
-        bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed(bulletin)
+        bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
         
     }
     

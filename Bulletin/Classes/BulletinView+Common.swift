@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-extension BulletinView {
+public extension BulletinView {
     
     /**
      A notification styled bulletin.

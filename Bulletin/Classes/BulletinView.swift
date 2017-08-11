@@ -19,35 +19,28 @@ internal protocol BulletinViewDelegate: class {
 /**
  Protocol that provides `BulletinView` appearance information.
  */
-public protocol BulletinViewAppearanceDelegate: class {
+@objc public protocol BulletinViewAppearanceDelegate: class {
     
     /**
      Called when a bulletin is about to be presented.
      */
-    func bulletinViewWillAppear(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWillAppear(_ bulletin: BulletinView)
     
     /**
      Called when a bulletin is about to be dismissed.
      */
-    func bulletinViewWillDisappear(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWillDisappear(_ bulletin: BulletinView)
     
     /**
      Called when a bulletin was dismissed automatically.
      */
-    func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
     
     /**
      Called when a bulletin was dismissed interactively (i.e. swiping away, tapping background effect view).
      */
-    func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
     
-}
-
-public extension BulletinViewAppearanceDelegate {
-    func bulletinViewWillAppear(_ bulletin: BulletinView) {}
-    func bulletinViewWillDisappear(_ bulletin: BulletinView) {}
-    func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView) {}
-    func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView) {}
 }
 
 /**

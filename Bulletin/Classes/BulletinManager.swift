@@ -52,7 +52,7 @@ internal class BulletinManager {
                 _self.animateBulletinIn(bulletin)
                 
                 // Needs to be called after animateBulletinIn() so frame is set correctly
-                bulletin.appearanceDelegate?.bulletinViewWillAppear(bulletin)
+                bulletin.appearanceDelegate?.bulletinViewWillAppear?(bulletin)
                 
                 var duration: TimeInterval = 0
                 if case .limit(let time) = bulletin.duration {
@@ -76,7 +76,7 @@ internal class BulletinManager {
         timer?.invalidate()
         timer = nil
         
-        cbv.appearanceDelegate?.bulletinViewWillDisappear(cbv)
+        cbv.appearanceDelegate?.bulletinViewWillDisappear?(cbv)
         animateCurrentBulletinOut(withDuration: duration, damping: damping, velocity: velocity, completion: completion)
         
     }
@@ -130,7 +130,7 @@ internal class BulletinManager {
             let bulletin = info["bulletin"] as? BulletinView else { return }
         
         dismissCurrentBulletin()
-        bulletin.appearanceDelegate?.bulletinViewWasAutomaticallyDismissed(bulletin)
+        bulletin.appearanceDelegate?.bulletinViewWasAutomaticallyDismissed?(bulletin)
         
     }
     
@@ -164,13 +164,13 @@ extension BulletinManager: BulletinViewDelegate {
         if bulletin.position == .top && (translation.y <= threshold || velocity.y <= -1200) {
             
             dismissCurrentBulletin(velocity: velocity.y)
-            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed(bulletin)
+            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
             
         }
         else if bulletin.position == .bottom && (translation.y >= threshold || velocity.y >= 1200) {
             
             dismissCurrentBulletin(velocity: velocity.y)
-            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed(bulletin)
+            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
             
         }
         else {

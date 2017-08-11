@@ -16,8 +16,9 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/MitchTreece'
 
   s.ios.deployment_target = '9.0'
+  s.ios.public_header_files = 'Bulletin/Classes/**/*.h'
   s.source_files = 'Bulletin/Classes/**/*'
-  
+
   s.dependency 'SnapKit', '~> 3.0.0'
 
 end
