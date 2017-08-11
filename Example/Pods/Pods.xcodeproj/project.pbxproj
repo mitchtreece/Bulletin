@@ -14,6 +14,7 @@
 		2525FF7647CB9FC99162FCB7C8094010 /* Pods-Bulletin_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CC1F2B87E300E83362535A65ECD4F9 /* Pods-Bulletin_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		26705D9E1F1DE1F70050FCDB /* UIApplication+Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705D9D1F1DE1F70050FCDB /* UIApplication+Bulletin.swift */; };
 		26705DA01F1E71960050FCDB /* Bulletin+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705D9F1F1E71960050FCDB /* Bulletin+SnapKit.swift */; };
+		268F7E301F3E60770023B1F4 /* BulletinView+ObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7E2E1F3E60760023B1F4 /* BulletinView+ObjC.swift */; };
 		26CB11E71F1D40D100E4951C /* BulletinView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */; };
 		26CB11E81F1D40D100E4951C /* BulletinWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11E31F1D40D100E4951C /* BulletinWindow.swift */; };
 		26CB11E91F1D40D100E4951C /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11E41F1D40D100E4951C /* BulletinViewController.swift */; };
@@ -100,6 +101,8 @@
 		261BC3C65CE6EBBED920977848212F6F /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		26705D9D1F1DE1F70050FCDB /* UIApplication+Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Bulletin.swift"; sourceTree = "<group>"; };
 		26705D9F1F1E71960050FCDB /* Bulletin+SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bulletin+SnapKit.swift"; sourceTree = "<group>"; };
+		268F7E2E1F3E60760023B1F4 /* BulletinView+ObjC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BulletinView+ObjC.swift"; sourceTree = "<group>"; };
+		268F7E2F1F3E60770023B1F4 /* Bulletin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bulletin.h; sourceTree = "<group>"; };
 		26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BulletinView+Common.swift"; sourceTree = "<group>"; };
 		26CB11E31F1D40D100E4951C /* BulletinWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinWindow.swift; sourceTree = "<group>"; };
 		26CB11E41F1D40D100E4951C /* BulletinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
@@ -254,9 +257,11 @@
 		0A177AF68E13BA3C0170A6F42B128CDF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				268F7E2F1F3E60770023B1F4 /* Bulletin.h */,
 				26CB11E61F1D40D100E4951C /* BulletinView.swift */,
 				26705D9F1F1E71960050FCDB /* Bulletin+SnapKit.swift */,
 				26CB11E21F1D40D100E4951C /* BulletinView+Common.swift */,
+				268F7E2E1F3E60760023B1F4 /* BulletinView+ObjC.swift */,
 				26CB11E41F1D40D100E4951C /* BulletinViewController.swift */,
 				26CB11E31F1D40D100E4951C /* BulletinWindow.swift */,
 				26CB11E51F1D40D100E4951C /* BulletinManager.swift */,
@@ -612,6 +617,7 @@
 				26705DA01F1E71960050FCDB /* Bulletin+SnapKit.swift in Sources */,
 				26CB11EB1F1D40D100E4951C /* BulletinView.swift in Sources */,
 				26CB11E81F1D40D100E4951C /* BulletinWindow.swift in Sources */,
+				268F7E301F3E60770023B1F4 /* BulletinView+ObjC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
