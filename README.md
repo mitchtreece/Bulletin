@@ -156,6 +156,8 @@ bulletin.snp_embed(content: contentView, usingStrictHeightConstraint: anotherVie
 Bulletin has _limited_ support for Objective-C. Creating & presenting a bulletin works the exact same way it does in Swift:
 
 ```Objective-C
+@import Bulletin;
+
 UIView *content = [[UIView alloc] init];
 content.backgroundColor = [UIColor whiteColor];
 
