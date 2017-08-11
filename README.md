@@ -151,6 +151,69 @@ func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
 bulletin.snp_embed(content: contentView, usingStrictHeightConstraint: anotherView.snp.height)
 ```
 
+## Objective-C
+
+Bulletin has _limited_ support for Objective-C. Creating & presenting a bulletin works the exact same way it does in Swift:
+
+```Objective-C
+UIView *content = [[UIView alloc] init];
+content.backgroundColor = [UIColor whiteColor];
+
+BulletinView *bulletin = [[BulletinView alloc] init];
+[bulletin setAppearanceDelegate:self];
+[bulletin embedContent:content usingStrictHeight:120.0f];
+[bulletin present];
+```
+
+Bulletin's **do not** support advanced styling options when used via Objective-C. However, the basic presentation options are available:
+
+```Objective-C
+BulletinView *bulletin = [[BulletinView alloc] init];
+[bulletin setPosition:kBulletinViewPositionTop];
+[bulletin setDuration:5];
+[bulletin setLevel:kBulletinViewLevelDefault];
+[bulletin embedContent:contentView];
+[bulletin present];
+```
+
+If you need more advanced styling options, you can create a simple Swift factory class _or_ an extension on `BulletinView` that returns fully-configured bulletins:
+
+```Swift
+class BulletinFactory {
+
+    static func sexyBulletin() -> BulletinView {
+
+        let bulletin = BulletinView()
+        bulletin.position = .bottom
+        bulletin.style.verticalEdgeOffset = 8
+        bulletin.style.backgroundEffect = .darken(alpha: 0.5)
+
+        ...
+
+        return bulletin
+
+    }
+
+}
+
+extension BulletinView {
+
+    static func sexy() -> BulletinView {
+
+        let bulletin = BulletinView()
+        bulletin.position = .bottom
+        bulletin.style.verticalEdgeOffset = 8
+        bulletin.style.backgroundEffect = .darken(alpha: 0.5)
+
+        ...
+
+        return bulletin
+
+    }
+
+}
+```
+
 ## Contributing
 
 Pull-requests are more than welcome. Bug fix? Feature? Open a PR and we'll get it merged in!
