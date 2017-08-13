@@ -25,6 +25,7 @@ internal class BulletinWindow: UIWindow {
                 // and should handle the touch
                 
                 return true
+                
             }
             
             for _subview in subview.subviews {
