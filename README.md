@@ -132,9 +132,9 @@ bulletin.action = {
 
 When an action handler is invoked, it's bulletin will automatically be dismissed.
 
-## Interaction Delegate
+## Appearance Delegate
 
-`BulletinView` also has an optional `interactionDelegate` that provides information about when & how a bulletin is presented/dismissed. The delegate includes the following functions:
+`BulletinView` also has an optional `appearanceDelegate` that provides information about when & how a bulletin is presented/dismissed. The delegate includes the following functions:
 
 ```Swift
 func bulletinViewWillAppear(_ bulletin: BulletinView)
@@ -174,6 +174,8 @@ BulletinView *bulletin = [[BulletinView alloc] init];
 [bulletin setPosition:kBulletinViewPositionTop];
 [bulletin setDuration:5];
 [bulletin setLevel:kBulletinViewLevelDefault];
+[bulletin setHorizontalEdgeOffset:8 verticalEdgeOffset:8];
+[bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
 [bulletin embedContent:contentView];
 [bulletin present];
 ```

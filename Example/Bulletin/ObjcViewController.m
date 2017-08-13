@@ -29,13 +29,14 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     self.tapLabel = [[UILabel alloc] init];
-    self.tapLabel.text = @"Tap to Present";
+    self.tapLabel.text = @"Tap to Present Bulletin";
     self.tapLabel.textColor = [UIColor lightGrayColor];
     self.tapLabel.textAlignment = NSTextAlignmentCenter;
+    self.tapLabel.numberOfLines = 0;
     self.tapLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.tapLabel];
     
-    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-|" options:0 metrics:0 views:@{@"label": self.tapLabel}];
+    NSArray *hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[label]-8-|" options:0 metrics:0 views:@{@"label": self.tapLabel}];
     NSArray *vConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[label]-|" options:0 metrics:0 views:@{@"label": self.tapLabel}];
     [self.view addConstraints:hConstraints];
     [self.view addConstraints:vConstraints];
@@ -53,12 +54,13 @@
     view.iconImageView.image = [UIImage imageNamed:@"app_icon"];
     view.iconTitleLabel.text = @"BULLETIN";
     view.timeLabel.text = @"now";
-    view.titleLabel.text = @"Trending News";
-    view.messageLabel.text = @"Elon Musk and his revolutionary quantum-teleporting Tesla Model 12";
+    view.titleLabel.text = @"Objective-C";
+    view.messageLabel.text = @"Hey look! Bulletin works with objc too! That's cool, but you really should just start using Swift 🙄.";
     
     BulletinView *bulletin = [BulletinView notification];
-    [bulletin setPosition:2]; // bottom
+    [bulletin setPosition:kBulletinViewPositionBottom];
     [bulletin setHorizontalEdgeOffset:8 verticalEdgeOffset:8];
+    [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
     [bulletin embedContent:view];
     [bulletin presentAfter:delay];
     

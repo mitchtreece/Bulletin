@@ -17,7 +17,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setPosition:)
-    public func set(position: NSInteger) {
+    public func set(position: Int) {
         
         switch position {
         case 0: self.position = .top
@@ -53,7 +53,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setLevel:)
-    public func set(level: NSInteger) {
+    public func set(level: Int) {
         
         switch level {
         case 0: self.level = .default
@@ -73,6 +73,29 @@ public extension BulletinView /* ObjC */ {
         
         self.style.horizontalEdgeOffset = horizontalEdgeOffset
         self.style.verticalEdgeOffset = verticalEdgeOffset
+        
+    }
+    
+    /**
+     Sets the bulletin's background effect style.
+     
+     `0 = none`, `1 = darken (light)`, `2 = darken (medium)`, `3 = darken (high)`,
+     `4 = blur (light)`, `5 = blur (extra light)`, `6 = blur (dark)`
+     */
+    @available(swift 1000)
+    @objc(setBackgroundEffect:)
+    public func set(backgroundEffect: Int) {
+        
+        switch backgroundEffect {
+        case 0: self.style.backgroundEffect = .none
+        case 1: self.style.backgroundEffect = .darken(alpha: 0.25)
+        case 2: self.style.backgroundEffect = .darken(alpha: 0.5)
+        case 3: self.style.backgroundEffect = .darken(alpha: 0.75)
+        case 4: self.style.backgroundEffect = .blur(style: .light)
+        case 5: self.style.backgroundEffect = .blur(style: .extraLight)
+        case 6: self.style.backgroundEffect = .blur(style: .dark)
+        default: self.style.backgroundEffect = .none
+        }
         
     }
     

@@ -215,10 +215,10 @@ public class TapticSettings {
         /// A notification taptic with a given feedback type.
         case notification(UINotificationFeedbackType)
         
-        // An impact taptic with a given feedback style.
+        /// An impact taptic with a given feedback style.
         case impact(UIImpactFeedbackStyle)
         
-        // A selection changed taptic.
+        /// A selection changed taptic.
         case selectionChanged
         
     }
@@ -275,7 +275,7 @@ public class BulletinView: UIView {
         /// Bulletins with this duration will never be dismissed automatically.
         case forever
         
-        /// Bulletins with this duration will automatically be dismissed after a given duration.
+        /// Bulletins with this duration will automatically be dismissed after a given delay.
         case limit(TimeInterval)
         
     }
@@ -380,7 +380,9 @@ public class BulletinView: UIView {
      The bulletin's presentation animation settings.
      */
     public private(set) var presentationAnimation = AnimationSettings()
-    // TODO: public private(set) var dismissalAnimation = AnimationSettings()
+    
+    // TODO: Customizable dismissal animation
+    // public private(set) var dismissalAnimation = AnimationSettings()
     
     /**
      The bulletin's style settings.
