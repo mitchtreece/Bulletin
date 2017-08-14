@@ -22,6 +22,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = UIColor.white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
     }
@@ -126,7 +127,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -134,6 +135,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: return "Bulletins"
         case 1: return "Background Effects"
+        case 2: return "Other"
         default: return nil
         }
         
@@ -144,6 +146,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: return 6
         case 1: return 3
+        case 2: return 1
         default: return 0
         }
         
@@ -183,6 +186,14 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
             case .blur: cell?.textLabel?.text = "Blur"
             }
             
+            return cell ?? UITableViewCell()
+            
+        }
+        else if indexPath.section == 2 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+            cell?.textLabel?.text = "Objective-C"
+            cell?.accessoryType = .disclosureIndicator
             return cell ?? UITableViewCell()
             
         }
@@ -230,6 +241,12 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
                 bulletin.present()
                 
             }
+            
+        }
+        else if indexPath.section == 2 {
+            
+            let vc = ObjcViewController()
+            navigationController?.pushViewController(vc, animated: true)
             
         }
         

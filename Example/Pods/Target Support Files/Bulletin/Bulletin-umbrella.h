@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "Bulletin.h"
 
 FOUNDATION_EXPORT double BulletinVersionNumber;
 FOUNDATION_EXPORT const unsigned char BulletinVersionString[];

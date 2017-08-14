@@ -19,35 +19,28 @@ internal protocol BulletinViewDelegate: class {
 /**
  Protocol that provides `BulletinView` appearance information.
  */
-public protocol BulletinViewAppearanceDelegate: class {
+@objc public protocol BulletinViewAppearanceDelegate: class {
     
     /**
      Called when a bulletin is about to be presented.
      */
-    func bulletinViewWillAppear(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWillAppear(_ bulletin: BulletinView)
     
     /**
      Called when a bulletin is about to be dismissed.
      */
-    func bulletinViewWillDisappear(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWillDisappear(_ bulletin: BulletinView)
     
     /**
      Called when a bulletin was dismissed automatically.
      */
-    func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
     
     /**
      Called when a bulletin was dismissed interactively (i.e. swiping away, tapping background effect view).
      */
-    func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
+    @objc optional func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
     
-}
-
-public extension BulletinViewAppearanceDelegate {
-    func bulletinViewWillAppear(_ bulletin: BulletinView) {}
-    func bulletinViewWillDisappear(_ bulletin: BulletinView) {}
-    func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView) {}
-    func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView) {}
 }
 
 /**
@@ -222,10 +215,10 @@ public class TapticSettings {
         /// A notification taptic with a given feedback type.
         case notification(UINotificationFeedbackType)
         
-        // An impact taptic with a given feedback style.
+        /// An impact taptic with a given feedback style.
         case impact(UIImpactFeedbackStyle)
         
-        // A selection changed taptic.
+        /// A selection changed taptic.
         case selectionChanged
         
     }
@@ -282,7 +275,7 @@ public class BulletinView: UIView {
         /// Bulletins with this duration will never be dismissed automatically.
         case forever
         
-        /// Bulletins with this duration will automatically be dismissed after a given duration.
+        /// Bulletins with this duration will automatically be dismissed after a given delay.
         case limit(TimeInterval)
         
     }
@@ -387,7 +380,9 @@ public class BulletinView: UIView {
      The bulletin's presentation animation settings.
      */
     public private(set) var presentationAnimation = AnimationSettings()
-    // TODO: public private(set) var dismissalAnimation = AnimationSettings()
+    
+    // TODO: Customizable dismissal animation
+    // public private(set) var dismissalAnimation = AnimationSettings()
     
     /**
      The bulletin's style settings.
