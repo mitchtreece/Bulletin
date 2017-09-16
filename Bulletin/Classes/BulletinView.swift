@@ -114,9 +114,9 @@ public class StyleSettings {
      
      This property gets ignored if the bulletin's position is equal to `center`.
      
-     Defaults to `24`.
+     Defaults to the status bar's height + 4.
      */
-    public var verticalEdgeOffset: CGFloat = 24
+    public var verticalEdgeOffset: CGFloat = (UIApplication.shared.statusBarFrame.height + 4)
     
     /**
      The set of corners to apply a rounded corner radius to.

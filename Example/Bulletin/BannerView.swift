@@ -44,7 +44,7 @@ class BannerView: UIView {
         addSubview(statusBarView)
         statusBarView.snp.makeConstraints { (make) in
             make.left.top.right.equalTo(0)
-            make.height.equalTo(20)
+            make.height.equalTo(UIApplication.shared.statusBarFrame.height)
         }
         
         grabberView = UIView()

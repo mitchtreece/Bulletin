@@ -42,7 +42,7 @@ class RootViewController: UIViewController {
             view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12"
             
             bulletin = BulletinView.notification()
-            bulletin.style.roundedCornerRadius = 8
+            bulletin.style.roundedCornerRadius = UIScreen.main.cornerRadius ?? 8
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
             bulletin.embed(content: view)
@@ -61,15 +61,51 @@ class RootViewController: UIViewController {
             
         case .statusBar:
             
-            let view = UILabel()
-            view.backgroundColor = UIColor.groupTableViewBackground
-            view.text = "Mmmmmm toasty."
-            view.textAlignment = .center
-            view.textColor = UIColor.black
-            view.font = UIFont.boldSystemFont(ofSize: 10)
+            var view: UIView!
             
+            if !UIDevice.current.isPhoneX {
+                
+                view = UILabel()
+                view.backgroundColor = UIColor.groupTableViewBackground
+                (view as! UILabel).text = "Mmmmmm toasty."
+                (view as! UILabel).textAlignment = .center
+                (view as! UILabel).textColor = UIColor.black
+                (view as! UILabel).font = UIFont.boldSystemFont(ofSize: 10)
+                
+            }
+            else {
+                
+                view = UIView()
+                view.backgroundColor = UIColor.groupTableViewBackground
+                
+                let leftLabel = UILabel()
+                leftLabel.backgroundColor = UIColor.clear
+                leftLabel.text = "😍"
+                leftLabel.textAlignment = .center
+                leftLabel.textColor = UIColor.black
+                leftLabel.font = UIFont.boldSystemFont(ofSize: 24)
+                view.addSubview(leftLabel)
+                leftLabel.snp.makeConstraints { (make) in
+                    make.left.top.bottom.equalTo(0)
+                    make.width.equalTo(88)
+                }
+                
+                let rightLabel = UILabel()
+                rightLabel.backgroundColor = UIColor.clear
+                rightLabel.text = "😘"
+                rightLabel.textAlignment = .center
+                rightLabel.textColor = UIColor.black
+                rightLabel.font = UIFont.boldSystemFont(ofSize: 24)
+                view.addSubview(rightLabel)
+                rightLabel.snp.makeConstraints { (make) in
+                    make.right.top.bottom.equalTo(0)
+                    make.width.equalTo(88)
+                }
+                
+            }
+
             bulletin = BulletinView.statusBar()
-            bulletin.embed(content: view, usingStrictHeight: 20)
+            bulletin.embed(content: view, usingStrictHeight: UIApplication.shared.statusBarFrame.height)
             
         case .alert:
             
