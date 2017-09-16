@@ -42,7 +42,7 @@ class RootViewController: UIViewController {
             view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12"
             
             bulletin = BulletinView.notification()
-            bulletin.style.roundedCornerRadius = UIScreen.main.cornerRadius ?? 8
+            bulletin.style.roundedCornerRadius = UIDevice.current.isPhoneX ? 18 : 8
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
             bulletin.embed(content: view)
@@ -78,6 +78,8 @@ class RootViewController: UIViewController {
                 view = UIView()
                 view.backgroundColor = UIColor.groupTableViewBackground
                 
+                let labelWidth = ((UIScreen.main.bounds.width - (UIScreen.main.topNotch?.size.width ?? 0)) / 2)
+                
                 let leftLabel = UILabel()
                 leftLabel.backgroundColor = UIColor.clear
                 leftLabel.text = "😍"
@@ -87,7 +89,7 @@ class RootViewController: UIViewController {
                 view.addSubview(leftLabel)
                 leftLabel.snp.makeConstraints { (make) in
                     make.left.top.bottom.equalTo(0)
-                    make.width.equalTo(88)
+                    make.width.equalTo(labelWidth)
                 }
                 
                 let rightLabel = UILabel()
@@ -99,7 +101,7 @@ class RootViewController: UIViewController {
                 view.addSubview(rightLabel)
                 rightLabel.snp.makeConstraints { (make) in
                     make.right.top.bottom.equalTo(0)
-                    make.width.equalTo(88)
+                    make.width.equalTo(labelWidth)
                 }
                 
             }
@@ -132,7 +134,7 @@ class RootViewController: UIViewController {
             view.delegate = self
             
             bulletin = BulletinView.sheet()
-            bulletin.style.verticalEdgeOffset = 14
+            bulletin.style.verticalEdgeOffset = UIScreen.main.bottomGrabber?.height ?? 14
             bulletin.style.horizontalEdgeOffset = 14
             bulletin.style.shadowAlpha = 0
             bulletin.embed(content: view)

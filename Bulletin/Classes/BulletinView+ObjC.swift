@@ -77,6 +77,18 @@ public extension BulletinView /* ObjC */ {
     }
     
     /**
+     Sets the bulletin's corner radius.
+     */
+    @available(swift 1000)
+    @objc(setCornerRadius:)
+    public func set(cornerRadius: CGFloat) {
+        
+        self.style.roundedCorners = [.allCorners]
+        self.style.roundedCornerRadius = cornerRadius
+        
+    }
+    
+    /**
      Sets the bulletin's background effect style.
      
      `0 = none`, `1 = darken (light)`, `2 = darken (medium)`, `3 = darken (high)`,

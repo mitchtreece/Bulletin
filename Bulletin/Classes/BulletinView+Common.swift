@@ -113,7 +113,7 @@ public extension BulletinView {
         bulletin.position = .bottom
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-        bulletin.style.verticalEdgeOffset = 8
+        bulletin.style.verticalEdgeOffset = UIScreen.main.bottomGrabber?.height ?? 8
         bulletin.style.isStretchingEnabled = false
         bulletin.style.isAnimatedTouchEnabled = false
         return bulletin
