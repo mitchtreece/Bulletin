@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
 ![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![Platform](https://img.shields.io/cocoapods/p/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-![iOS](https://img.shields.io/badge/iOS-10, 11-blue.svg)
+![iOS](https://img.shields.io/badge/iOS-10,%2011-blue.svg)
 ![iPhoneX](https://img.shields.io/badge/iPhone%20X-✔-brightgreen.svg)
 [![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
 
