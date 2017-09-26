@@ -105,11 +105,11 @@ public class StyleSettings {
     /**
      The bulletin's insets from the screen edges.
      
-     Defaults to (top: statusBar + 4, left: 8, bottom: homeGrabber + 4 or 8, right: 8)
+     Defaults to (top: statusBar + 4, left: 8, bottom: (homeGrabber + 4) or (8), right: 8)
      */
     public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height + 4,
                                                        left: 8,
-                                                       bottom: (UIScreen.main.bottomGrabber != nil) ? UIScreen.main.bottomGrabber!.height + 4 : 8,
+                                                       bottom: (UIScreen.main.homeGrabber != nil) ? UIScreen.main.homeGrabber!.size.height + 4 : 8,
                                                        right: 8)
     
     /**
@@ -549,7 +549,7 @@ public class BulletinView: UIView {
             else if recognizer.state == .ended {
                 
                 UIView.animate(withDuration: 0.1, delay: 0, options: [], animations: {
-                    // Need an identity transform, translated by my current dx & dy
+                    // Need an identity transform, translated by the current dx & dy
                     self.transform = CGAffineTransform.identity.translatedBy(x: self.transform.tx, y: self.transform.ty)
                 }, completion: nil)
                 

@@ -103,7 +103,7 @@ class BannerView: UIView {
         messageLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .vertical)
         addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.left.equalTo(titleLabel)
             make.right.equalTo(-12)
             make.bottom.equalTo(grabberView.snp.top).offset(-12)

@@ -78,7 +78,7 @@ class RootViewController: UIViewController {
                 view = UIView()
                 view.backgroundColor = UIColor.groupTableViewBackground
                 
-                let labelWidth = ((UIScreen.main.bounds.width - (UIScreen.main.topNotch?.size.width ?? 0)) / 2)
+                let labelWidth = ((UIScreen.main.bounds.width - (UIScreen.main.notch?.width ?? 0)) / 2)
                 
                 let leftLabel = UILabel()
                 leftLabel.backgroundColor = UIColor.clear
@@ -132,13 +132,24 @@ class RootViewController: UIViewController {
             
             let view = SheetView()
             view.delegate = self
-            
-            let bottomInset = (UIScreen.main.bottomGrabber != nil) ? (UIScreen.main.bottomGrabber!.height + 4) : 8
+
+            let bottomInset = (UIScreen.main.homeGrabber != nil) ? (UIScreen.main.homeGrabber!.size.height + 4) : 8
             
             bulletin = BulletinView.sheet()
             bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: bottomInset)
             bulletin.style.shadowAlpha = 0
             bulletin.embed(content: view)
+        
+        case .notch:
+            
+            let view = NotchView()
+            view.titleLabel.text = "Hello, iPhone X"
+            
+            let height = ((UIApplication.shared.statusBarFrame.height + 44) - 14)
+            
+            bulletin = BulletinView.banner()
+            bulletin.style.edgeInsets = UIEdgeInsets(horizontal: UIScreen.main.notch!.frame.origin.x, vertical: 0)
+            bulletin.embed(content: view, usingStrictHeight: height)
             
         }
         
@@ -157,6 +168,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         case alert
         case hud
         case sheet
+        case notch
     }
     
     enum BackgroundEffectRow: Int {
@@ -183,7 +195,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-        case 0: return 6
+        case 0: return UIDevice.current.isPhoneX ? 7 : 6
         case 1: return 3
         case 2: return 1
         default: return 0
@@ -207,6 +219,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
             case .alert: cell?.textLabel?.text = "Alert"
             case .hud: cell?.textLabel?.text = "HUD"
             case .sheet: cell?.textLabel?.text = "Sheet"
+            case .notch: cell?.textLabel?.text = "Notch"
             }
             
             return cell ?? UITableViewCell()

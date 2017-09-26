@@ -11,6 +11,7 @@
 		26705D9A1F1DDD770050FCDB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705D991F1DDD770050FCDB /* NavigationController.swift */; };
 		26705DA61F1EBF5E0050FCDB /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26705DA51F1EBF5E0050FCDB /* SheetView.swift */; };
 		268F7E341F3FE4120023B1F4 /* ObjcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268F7E331F3FE4120023B1F4 /* ObjcViewController.m */; };
+		26B464CA1F7A2CB10047E410 /* NotchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B464C91F7A2CB10047E410 /* NotchView.swift */; };
 		26CB11F21F1D624200E4951C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB11F11F1D624200E4951C /* RootViewController.swift */; };
 		26CB120A1F1D8CC200E4951C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB12091F1D8CC200E4951C /* NotificationView.swift */; };
 		26CB120C1F1DBAAE00E4951C /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB120B1F1DBAAE00E4951C /* BannerView.swift */; };
@@ -42,6 +43,7 @@
 		268F7E311F3FE4120023B1F4 /* Bulletin_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bulletin_Example-Bridging-Header.h"; sourceTree = "<group>"; };
 		268F7E321F3FE4120023B1F4 /* ObjcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcViewController.h; sourceTree = "<group>"; };
 		268F7E331F3FE4120023B1F4 /* ObjcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcViewController.m; sourceTree = "<group>"; };
+		26B464C91F7A2CB10047E410 /* NotchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchView.swift; sourceTree = "<group>"; };
 		26CB11F11F1D624200E4951C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		26CB12091F1D8CC200E4951C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		26CB120B1F1DBAAE00E4951C /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				26CB120D1F1DC26700E4951C /* AlertView.swift */,
 				26705D971F1DD3AE0050FCDB /* HudView.swift */,
 				26705DA51F1EBF5E0050FCDB /* SheetView.swift */,
+				26B464C91F7A2CB10047E410 /* NotchView.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for Bulletin";
@@ -393,6 +396,7 @@
 				26705D981F1DD3AE0050FCDB /* HudView.swift in Sources */,
 				268F7E341F3FE4120023B1F4 /* ObjcViewController.m in Sources */,
 				26CB11F21F1D624200E4951C /* RootViewController.swift in Sources */,
+				26B464CA1F7A2CB10047E410 /* NotchView.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				26705D9A1F1DDD770050FCDB /* NavigationController.swift in Sources */,
 				26705DA61F1EBF5E0050FCDB /* SheetView.swift in Sources */,
