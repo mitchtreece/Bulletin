@@ -241,6 +241,7 @@ public class TapticSettings {
 /**
  `BulletinView` is a `UIView` container subclass that contains various bulletin properties.
  */
+@objcMembers
 public class BulletinView: UIView {
     
     /**

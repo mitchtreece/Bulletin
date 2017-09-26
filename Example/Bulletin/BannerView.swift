@@ -73,10 +73,10 @@ class BannerView: UIView {
         titleLabel = UILabel()
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        titleLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
-        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .horizontal)
-        titleLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .vertical)
-        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .vertical)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(iconImageView)
@@ -86,8 +86,8 @@ class BannerView: UIView {
         timeLabel = UILabel()
         timeLabel.textColor = UIColor.white.withAlphaComponent(0.5)
         timeLabel.font = UIFont.systemFont(ofSize: 12)
-        timeLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh, for: .horizontal)
-        timeLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        timeLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        timeLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
         addSubview(timeLabel)
         timeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel.snp.right).offset(8)
@@ -99,8 +99,8 @@ class BannerView: UIView {
         messageLabel.textColor = UIColor.white.withAlphaComponent(0.8)
         messageLabel.font = UIFont.systemFont(ofSize: 13)
         messageLabel.numberOfLines = 0
-        messageLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh, for: .vertical)
-        messageLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .vertical)
+        messageLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        messageLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(2)

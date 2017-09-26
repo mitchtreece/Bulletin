@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objcMembers
 class NotificationView: UIView {
     
     var backgroundBlurView: UIVisualEffectView!
@@ -85,8 +86,8 @@ class NotificationView: UIView {
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 13)
         titleLabel.numberOfLines = 0
-        titleLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .vertical)
-        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .vertical)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(topContentView.snp.bottom)
@@ -98,8 +99,8 @@ class NotificationView: UIView {
         messageLabel.textColor = UIColor.black
         messageLabel.font = UIFont.systemFont(ofSize: 13)
         messageLabel.numberOfLines = 0
-        messageLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh, for: .vertical)
-        messageLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .vertical)
+        messageLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        messageLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(2)
