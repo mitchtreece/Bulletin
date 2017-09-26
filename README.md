@@ -1,8 +1,10 @@
 ![Bulletin](Resources/banner.png)
 
 [![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![Platform](https://img.shields.io/cocoapods/p/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
+![iOS](https://img.shields.io/badge/iOS-10, 11-blue.svg)
+![iPhoneX](https://img.shields.io/badge/iPhone%20X-✔-brightgreen.svg)
 [![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
 
 ## Overview
@@ -16,6 +18,14 @@ Bulletin is a customizable alert library that makes it incredibly easy to build 
     <td style="border-color:transparent"><img src="Resources/alert.gif"/></td>
     <td style="border-color:transparent"><img src="Resources/hud.gif"/></td>
     <td style="border-color:transparent"><img src="Resources/sheet.gif"/></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td style="border-color:transparent"><img src="Resources/notification-x.png"/></td>
+    <td style="border-color:transparent"><img src="Resources/banner-x.png"/></td>
+    <td style="border-color:transparent"><img src="Resources/toast-x.png"/></td>
+    <td style="border-color:transparent"><img src="Resources/sheet-x.png"/></td>
   </tr>
 </table>
 
@@ -100,8 +110,7 @@ bulletin.presentationAnimation.springVelocity = 0.4
 
 bulletin.style.statusBar = .lightContent
 bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-bulletin.style.horizontalEdgeOffset = 8
-bulletin.style.verticalEdgeOffset = 24
+bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: 24)
 bulletin.style.roundedCorners = .allCorners
 bulletin.style.roundedCornerRadius = 4
 bulletin.style.shadowColor = UIColor.black
@@ -143,6 +152,31 @@ func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
 func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
 ```
 
+## iPhone X
+
+Bulletin fully supports the new iPhone X! To help with the new safe content area's on the X, some useful extensions have been added to `UIDevice` & `UIScreen`:
+
+**UIDevice**
+```Swift
+var isPhoneX: Bool
+```
+
+**UIScreen**
+```Swift
+var displayFeatureInsets: UIEdgeInsets
+var cornerRadius: CGFloat
+var notch: UINotch?
+var homeGrabber: UIHomeGrabber?
+```
+
+Most of these are self-explanatory. However, two new classes: `UINotch` & `UIHomeGrabber` have been added, and are accessible on the current `UIScreen`. These new classes provide position & sizing information related to the new top-notch & bottom home-grabber on the iPhone X.
+
+By default, all of Bulletin's default style options now use `displayFeatureInsets` so edge insets will be set correctly on any device. You can also do this manually if you wish to customize a bulletin's edge insets:
+
+```swift
+bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: UIScreen.main.displayFeatureInsets.top + 20)
+```
+
 ## SnapKit
 
 [SnapKit](http://snapkit.io) is a wonderful library that helps ease the pain of working with programatic layout constraints. I use it daily, and you should too! Bulletin provides basic SnapKit integration via a specialized `snp_embed()` function that takes a SnapKit `ConstraintItem` instead of a strict height.
@@ -174,7 +208,7 @@ BulletinView *bulletin = [[BulletinView alloc] init];
 [bulletin setPosition:kBulletinViewPositionTop];
 [bulletin setDuration:5];
 [bulletin setLevel:kBulletinViewLevelDefault];
-[bulletin setHorizontalEdgeOffset:8 verticalEdgeOffset:8];
+[bulletin setEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
 [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
 [bulletin embedContent:contentView];
 [bulletin present];
@@ -189,7 +223,7 @@ class BulletinFactory {
 
         let bulletin = BulletinView()
         bulletin.position = .bottom
-        bulletin.style.verticalEdgeOffset = 8
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 0, vertical: 8)
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
 
         ...
@@ -206,7 +240,7 @@ extension BulletinView {
 
         let bulletin = BulletinView()
         bulletin.position = .bottom
-        bulletin.style.verticalEdgeOffset = 8
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 0, vertical: 8)
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
 
         ...
