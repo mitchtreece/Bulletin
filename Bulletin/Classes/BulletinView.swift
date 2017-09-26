@@ -101,22 +101,16 @@ public class StyleSettings {
      Defaults to `none`.
      */
     public var backgroundEffect: BackgroundEffect = .none
-    
+
     /**
-     The bulletin's offset from it's left & right container edges.
+     The bulletin's insets from the screen edges.
      
-     Defaults to `8`.
+     Defaults to (top: statusBar + 4, left: 8, bottom: homeGrabber + 4 or 8, right: 8)
      */
-    public var horizontalEdgeOffset: CGFloat = 8
-    
-    /**
-     The bulletin's offset from it's top & bottom container edges.
-     
-     This property gets ignored if the bulletin's position is equal to `center`.
-     
-     Defaults to the status bar's height + 4.
-     */
-    public var verticalEdgeOffset: CGFloat = (UIApplication.shared.statusBarFrame.height + 4)
+    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height + 4,
+                                                       left: 8,
+                                                       bottom: (UIScreen.main.bottomGrabber != nil) ? UIScreen.main.bottomGrabber!.height + 4 : 8,
+                                                       right: 8)
     
     /**
      The set of corners to apply a rounded corner radius to.

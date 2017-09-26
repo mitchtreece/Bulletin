@@ -65,14 +65,13 @@ public extension BulletinView /* ObjC */ {
     }
     
     /**
-     Sets the bulletin's horizontal & vertical edge offsets.     
+     Sets the bulletin's edge insets.
      */
     @available(swift 1000)
-    @objc(setHorizontalEdgeOffset:verticalEdgeOffset:)
-    public func set(horizontalEdgeOffset: CGFloat, verticalEdgeOffset: CGFloat) {
+    @objc(setEdgeInsets:)
+    public func set(edgeInsets: UIEdgeInsets) {
         
-        self.style.horizontalEdgeOffset = horizontalEdgeOffset
-        self.style.verticalEdgeOffset = verticalEdgeOffset
+        self.style.edgeInsets = edgeInsets
         
     }
     

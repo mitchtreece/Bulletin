@@ -36,8 +36,7 @@ public extension BulletinView {
         bulletin.presentationAnimation.duration = 0.2
         bulletin.presentationAnimation.springDamping = 0
         bulletin.presentationAnimation.springVelocity = 0
-        bulletin.style.verticalEdgeOffset = 0
-        bulletin.style.horizontalEdgeOffset = 0
+        bulletin.style.edgeInsets = UIEdgeInsets.zero
         bulletin.style.roundedCorners = []
         bulletin.style.roundedCornerRadius = 0
         bulletin.style.isStretchingEnabled = false
@@ -59,8 +58,7 @@ public extension BulletinView {
         bulletin.presentationAnimation.duration = 0.2
         bulletin.presentationAnimation.springDamping = 0
         bulletin.presentationAnimation.springVelocity = 0
-        bulletin.style.verticalEdgeOffset = 0
-        bulletin.style.horizontalEdgeOffset = 0
+        bulletin.style.edgeInsets = UIEdgeInsets.zero
         bulletin.style.roundedCorners = []
         bulletin.style.roundedCornerRadius = 0
         bulletin.style.isStretchingEnabled = false
@@ -80,7 +78,7 @@ public extension BulletinView {
         bulletin.position = .center
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-        bulletin.style.horizontalEdgeOffset = 50
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 50, vertical: 0)
         bulletin.style.roundedCornerRadius = 14
         return bulletin
         
@@ -96,7 +94,7 @@ public extension BulletinView {
         bulletin.position = .center
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-        bulletin.style.horizontalEdgeOffset = (UIScreen.main.bounds.width / 3)
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: (UIScreen.main.bounds.width / 3), vertical: 0)
         bulletin.style.roundedCornerRadius = 14
         bulletin.style.isBackgroundDismissEnabled = false
         return bulletin
@@ -113,7 +111,7 @@ public extension BulletinView {
         bulletin.position = .bottom
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-        bulletin.style.verticalEdgeOffset = UIScreen.main.bottomGrabber?.height ?? 8
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: UIScreen.main.bottomGrabber?.height ?? 8)
         bulletin.style.isStretchingEnabled = false
         bulletin.style.isAnimatedTouchEnabled = false
         return bulletin

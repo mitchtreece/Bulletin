@@ -20,6 +20,14 @@ public struct UIGrabber {
     
 }
 
+public extension UIDevice {
+    
+    public var isPhoneX: Bool {
+        return UIScreen.main.bounds.height == 812
+    }
+    
+}
+
 public extension UIScreen {
     
     public var topNotch: UINotch? {

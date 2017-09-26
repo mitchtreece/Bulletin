@@ -16,9 +16,9 @@
 		14B24E535D19AF348F0CC2B4C61FE7FA /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B78113584563565B18CD0248D9D0A93 /* ConstraintViewDSL.swift */; };
 		16095F827E8C7EB07239A3FD567CC3D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512147FDA1939417BB42A1771EA830F9 /* Foundation.framework */; };
 		2525FF7647CB9FC99162FCB7C8094010 /* Pods-Bulletin_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CC1F2B87E300E83362535A65ECD4F9 /* Pods-Bulletin_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26A188201F6CA7FC0057E2AC /* UIDevice+iPhoneX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A1881F1F6CA7FC0057E2AC /* UIDevice+iPhoneX.swift */; };
 		26A81A0D242E68CA8C9FE957567C3C74 /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57A1388EA86D187A2393D23DCA824E /* BulletinView.swift */; };
-		26E5AE011F6CAB0D00912961 /* UIScreen+iPhoneX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5AE001F6CAB0D00912961 /* UIScreen+iPhoneX.swift */; };
+		26B464C81F79E8900047E410 /* UIEdgeInsets+Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B464C71F79E8900047E410 /* UIEdgeInsets+Bulletin.swift */; };
+		26E5AE011F6CAB0D00912961 /* Bulletin+iPhoneX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E5AE001F6CAB0D00912961 /* Bulletin+iPhoneX.swift */; };
 		2BA5E35C33AE8CAD2CE02A9169283910 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73878F9931EAA78C3DAAF7DDA048218E /* LayoutConstraint.swift */; };
 		314761087382BBC360CDD47FD08CF53A /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F675DF8551ECAD72F0C6D96084C6DD4 /* SnapKit-dummy.m */; };
 		35FFB5CFDF5B6C0BD89968F8491B345D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 512147FDA1939417BB42A1771EA830F9 /* Foundation.framework */; };
@@ -103,8 +103,8 @@
 		1F2B728DCF7E9F88008827314C2AE823 /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Source/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		212E2771F1CD458D21A0FB3CA1C914F3 /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		261BC3C65CE6EBBED920977848212F6F /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
-		26A1881F1F6CA7FC0057E2AC /* UIDevice+iPhoneX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+iPhoneX.swift"; sourceTree = "<group>"; };
-		26E5AE001F6CAB0D00912961 /* UIScreen+iPhoneX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+iPhoneX.swift"; sourceTree = "<group>"; };
+		26B464C71F79E8900047E410 /* UIEdgeInsets+Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Bulletin.swift"; sourceTree = "<group>"; };
+		26E5AE001F6CAB0D00912961 /* Bulletin+iPhoneX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bulletin+iPhoneX.swift"; sourceTree = "<group>"; };
 		29CC1F2B87E300E83362535A65ECD4F9 /* Pods-Bulletin_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Bulletin_Example-umbrella.h"; sourceTree = "<group>"; };
 		2BC63229BFFF4A524F7A9E9D6016D4A0 /* Pods-Bulletin_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bulletin_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2C1948459EE30452976436171163CE36 /* Bulletin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Bulletin.h; sourceTree = "<group>"; };
@@ -271,8 +271,8 @@
 				FD3F330F924DCC685629BE132A9E42BE /* BulletinViewController.swift */,
 				CAEBC09DE9A25AFCBBABB6DAEC00C94D /* BulletinWindow.swift */,
 				A752F8EBDE4F7BDB95FDEBD51410DA4C /* UIApplication+Bulletin.swift */,
-				26A1881F1F6CA7FC0057E2AC /* UIDevice+iPhoneX.swift */,
-				26E5AE001F6CAB0D00912961 /* UIScreen+iPhoneX.swift */,
+				26B464C71F79E8900047E410 /* UIEdgeInsets+Bulletin.swift */,
+				26E5AE001F6CAB0D00912961 /* Bulletin+iPhoneX.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -605,14 +605,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD71E45DA6088E190E4ACDE98C37CC1A /* Bulletin+SnapKit.swift in Sources */,
-				26A188201F6CA7FC0057E2AC /* UIDevice+iPhoneX.swift in Sources */,
 				145A9E562A5E981453B8D04D853143C1 /* Bulletin-dummy.m in Sources */,
 				CA9B096665F4DA306C894517B195F025 /* BulletinManager.swift in Sources */,
-				26E5AE011F6CAB0D00912961 /* UIScreen+iPhoneX.swift in Sources */,
+				26E5AE011F6CAB0D00912961 /* Bulletin+iPhoneX.swift in Sources */,
 				BD84EF5F77488F2B3C0A56B6C727F1BF /* BulletinView+Common.swift in Sources */,
 				7E2940C7354E2C221607A4828C0A52B4 /* BulletinView+ObjC.swift in Sources */,
 				26A81A0D242E68CA8C9FE957567C3C74 /* BulletinView.swift in Sources */,
 				F0853576732A0AA55E31AFFC8B88E15D /* BulletinViewController.swift in Sources */,
+				26B464C81F79E8900047E410 /* UIEdgeInsets+Bulletin.swift in Sources */,
 				5A4066FDC503AF15F2DF9B9F4F55854B /* BulletinWindow.swift in Sources */,
 				DAFF342D0153583C586DB4B8349002F0 /* UIApplication+Bulletin.swift in Sources */,
 			);

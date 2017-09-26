@@ -57,12 +57,8 @@
     view.titleLabel.text = @"Objective-C";
     view.messageLabel.text = @"Hey look! Bulletin works with objc too! That's cool, but you really should just start using Swift 🙄.";
     
-    CGFloat grabberHeight = [UIScreen mainScreen].bottomGrabberHeight;
-    CGFloat verticalEdgeOffset = (grabberHeight > 0) ? grabberHeight : 8;
-    
     BulletinView *bulletin = [BulletinView notification];
     [bulletin setPosition:kBulletinViewPositionBottom];
-    [bulletin setHorizontalEdgeOffset:8 verticalEdgeOffset:verticalEdgeOffset];
     [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
     [bulletin embedContent:view];
     

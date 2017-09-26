@@ -133,9 +133,10 @@ class RootViewController: UIViewController {
             let view = SheetView()
             view.delegate = self
             
+            let bottomInset = (UIScreen.main.bottomGrabber != nil) ? (UIScreen.main.bottomGrabber!.height + 4) : 8
+            
             bulletin = BulletinView.sheet()
-            bulletin.style.verticalEdgeOffset = UIScreen.main.bottomGrabber?.height ?? 14
-            bulletin.style.horizontalEdgeOffset = 14
+            bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: bottomInset)
             bulletin.style.shadowAlpha = 0
             bulletin.embed(content: view)
             
