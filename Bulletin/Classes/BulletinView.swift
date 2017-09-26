@@ -103,14 +103,12 @@ public class StyleSettings {
     public var backgroundEffect: BackgroundEffect = .none
 
     /**
-     The bulletin's insets from the screen edges.
-     
-     Defaults to (top: statusBar + 4, left: 8, bottom: (homeGrabber + 4) or (8), right: 8)
+     The bulletin's insets from the screen edges. By default, this takes into account display features (top notch, home grabber) if applicable.
      */
-    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height + 4,
-                                                       left: 8,
-                                                       bottom: (UIScreen.main.homeGrabber != nil) ? UIScreen.main.homeGrabber!.size.height + 4 : 8,
-                                                       right: 8)
+    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: UIScreen.main.displayFeatureInsets.top + 4,
+                                                       left: UIScreen.main.displayFeatureInsets.left + 8,
+                                                       bottom: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8),
+                                                       right: UIScreen.main.displayFeatureInsets.right + 8)
     
     /**
      The set of corners to apply a rounded corner radius to.

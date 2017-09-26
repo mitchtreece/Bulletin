@@ -64,6 +64,7 @@
     
     if ([UIDevice currentDevice].isPhoneX) {
         [bulletin setCornerRadius:18];
+        [bulletin setEdgeInsets:UIEdgeInsetsMake(0, 18, [UIScreen mainScreen].displayFeatureInsets.bottom + 4, 18)];
     }
     
     [bulletin presentAfter:delay];

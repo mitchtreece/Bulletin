@@ -43,7 +43,7 @@ class NotchView: UIView {
         
         super.layoutSubviews()
         
-        let cornerRadii = CGSize(width: UIScreen.main.notch?.cornerRadius ?? 0, height: UIScreen.main.notch?.cornerRadius ?? 0)
+        let cornerRadii = CGSize(width: UIScreen.main.notch!.cornerRadius, height: UIScreen.main.notch!.cornerRadius)
         
         let mask = CAShapeLayer()
         mask.path = UIBezierPath(roundedRect: frame, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: cornerRadii).cgPath

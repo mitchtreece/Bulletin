@@ -39,12 +39,18 @@ class RootViewController: UIViewController {
             view.iconTitleLabel.text = "BULLETIN"
             view.timeLabel.text = "now"
             view.titleLabel.text = "Trending News"
-            view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12"
+            view.messageLabel.text = "Elon Musk reveals his next big project. The revolutionary new quantum teleporting Tesla Model 12! 🚗🚙🚗"
             
             bulletin = BulletinView.notification()
-            bulletin.style.roundedCornerRadius = UIDevice.current.isPhoneX ? 18 : 8
+            bulletin.style.roundedCornerRadius = 8
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
+            
+            if UIDevice.current.isPhoneX {
+                bulletin.style.roundedCornerRadius = 18
+                bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 18, vertical: UIScreen.main.displayFeatureInsets.top + 4)
+            }
+            
             bulletin.embed(content: view)
                         
         case .banner:
@@ -78,7 +84,7 @@ class RootViewController: UIViewController {
                 view = UIView()
                 view.backgroundColor = UIColor.groupTableViewBackground
                 
-                let labelWidth = ((UIScreen.main.bounds.width - (UIScreen.main.notch?.width ?? 0)) / 2)
+                let labelWidth = ((UIScreen.main.bounds.width - UIScreen.main.notch!.width) / 2)
                 
                 let leftLabel = UILabel()
                 leftLabel.backgroundColor = UIColor.clear
@@ -133,7 +139,10 @@ class RootViewController: UIViewController {
             let view = SheetView()
             view.delegate = self
 
-            let bottomInset = (UIScreen.main.homeGrabber != nil) ? (UIScreen.main.homeGrabber!.size.height + 4) : 8
+            var bottomInset = UIScreen.main.displayFeatureInsets.bottom + 4
+            if !UIDevice.current.isPhoneX {
+                bottomInset += 4
+            }
             
             bulletin = BulletinView.sheet()
             bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: bottomInset)
