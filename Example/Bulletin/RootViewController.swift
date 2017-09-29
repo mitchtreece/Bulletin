@@ -48,7 +48,7 @@ class RootViewController: UIViewController {
             
             if UIDevice.current.isPhoneX {
                 bulletin.style.roundedCornerRadius = 18
-                bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 18, vertical: UIScreen.main.displayFeatureInsets.top + 4)
+                bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 14, vertical: UIScreen.main.displayFeatureInsets.top + 4)
             }
             
             bulletin.embed(content: view)

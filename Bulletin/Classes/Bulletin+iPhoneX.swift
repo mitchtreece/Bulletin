@@ -43,9 +43,7 @@ import Foundation
  A display feature representing the system "home-grabber" on the screen.
  */
 @objcMembers
-@objc public class UIHomeGrabber: UIDisplayFeature {
-    //
-}
+@objc public class UIHomeGrabber: UIDisplayFeature {}
 
 public extension UIDevice {
     
@@ -65,13 +63,14 @@ public extension UIScreen {
      */
     @objc public var displayFeatureInsets: UIEdgeInsets {
         
+        let statusBar = UIApplication.shared.statusBarFrame.height
+        
         guard UIDevice.current.isPhoneX else {
-            return UIEdgeInsets(top: UIApplication.shared.statusBarFrame.height, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: statusBar, left: 0, bottom: 0, right: 0)
         }
         
-        let top = UIApplication.shared.statusBarFrame.height
         let bottom = UIScreen.main.homeGrabber?.height ?? 0
-        return UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
+        return UIEdgeInsets(top: statusBar, left: 0, bottom: bottom, right: 0)
         
     }
     
@@ -91,8 +90,8 @@ public extension UIScreen {
     @objc public var notch: UINotch? {
 
         guard UIDevice.current.isPhoneX else { return nil }
-        let width: CGFloat = 209
-        let frame = CGRect(x: ((UIScreen.main.bounds.width - width) / 2), y: 0, width: width, height: 31)
+        let size = CGSize(width: 209, height: 31)
+        let frame = CGRect(x: ((UIScreen.main.bounds.width - size.width) / 2), y: 0, width: size.width, height: size.height)
         let notch = UINotch(frame: frame)
         return notch
 
@@ -104,7 +103,8 @@ public extension UIScreen {
     @objc public var homeGrabber: UIHomeGrabber? {
 
         guard UIDevice.current.isPhoneX else { return nil }
-        let frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 23, width: UIScreen.main.bounds.width, height: 23)
+        let size = CGSize(width: UIScreen.main.bounds.width, height: 23)
+        let frame = CGRect(x: 0, y: (UIScreen.main.bounds.height - size.height), width: size.width, height: size.height)
         let grabber = UIHomeGrabber(frame: frame)
         return grabber
 
