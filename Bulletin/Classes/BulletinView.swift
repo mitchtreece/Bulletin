@@ -101,22 +101,14 @@ public class StyleSettings {
      Defaults to `none`.
      */
     public var backgroundEffect: BackgroundEffect = .none
-    
+
     /**
-     The bulletin's offset from it's left & right container edges.
-     
-     Defaults to `8`.
+     The bulletin's insets from the screen edges. By default, this takes into account display features (top notch, home grabber) if applicable.
      */
-    public var horizontalEdgeOffset: CGFloat = 8
-    
-    /**
-     The bulletin's offset from it's top & bottom container edges.
-     
-     This property gets ignored if the bulletin's position is equal to `center`.
-     
-     Defaults to `24`.
-     */
-    public var verticalEdgeOffset: CGFloat = 24
+    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: UIScreen.main.displayFeatureInsets.top + 4,
+                                                       left: UIScreen.main.displayFeatureInsets.left + 8,
+                                                       bottom: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8),
+                                                       right: UIScreen.main.displayFeatureInsets.right + 8)
     
     /**
      The set of corners to apply a rounded corner radius to.
@@ -249,6 +241,7 @@ public class TapticSettings {
 /**
  `BulletinView` is a `UIView` container subclass that contains various bulletin properties.
  */
+@objcMembers
 public class BulletinView: UIView {
     
     /**
@@ -555,7 +548,7 @@ public class BulletinView: UIView {
             else if recognizer.state == .ended {
                 
                 UIView.animate(withDuration: 0.1, delay: 0, options: [], animations: {
-                    // Need an identity transform, translated by my current dx & dy
+                    // Need an identity transform, translated by the current dx & dy
                     self.transform = CGAffineTransform.identity.translatedBy(x: self.transform.tx, y: self.transform.ty)
                 }, completion: nil)
                 

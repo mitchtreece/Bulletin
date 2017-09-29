@@ -70,8 +70,8 @@ class AlertView: UIView {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .vertical)
-        titleLabel.setContentHuggingPriority(UILayoutPriorityDefaultHigh, for: .vertical)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(24)
@@ -85,8 +85,8 @@ class AlertView: UIView {
         messageLabel.textAlignment = .center
         messageLabel.font = UIFont.systemFont(ofSize: 14)
         messageLabel.numberOfLines = 0
-        messageLabel.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh, for: .vertical)
-        messageLabel.setContentHuggingPriority(UILayoutPriorityDefaultLow, for: .vertical)
+        messageLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        messageLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
         addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
