@@ -1,6 +1,6 @@
 {
   "name": "Bulletin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "summary": "Customizable alert library for Swift.",
   "description": "Bulletin is a customizable alert library that makes it incredibly\neasy to build highly-stylized alerts for your iOS app.",
   "homepage": "https://github.com/mitchtreece/Bulletin",
@@ -13,11 +13,11 @@
   },
   "source": {
     "git": "https://github.com/mitchtreece/Bulletin.git",
-    "tag": "1.0.0"
+    "tag": "1.1.0"
   },
   "social_media_url": "https://twitter.com/MitchTreece",
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "ios": {
     "public_header_files": "Bulletin/Classes/**/*.h"
@@ -25,7 +25,7 @@
   "source_files": "Bulletin/Classes/**/*",
   "dependencies": {
     "SnapKit": [
-      "~> 3.0.0"
+      "~> 4.0.0"
     ]
   }
 }

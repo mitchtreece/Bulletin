@@ -39,12 +39,18 @@ class RootViewController: UIViewController {
             view.iconTitleLabel.text = "BULLETIN"
             view.timeLabel.text = "now"
             view.titleLabel.text = "Trending News"
-            view.messageLabel.text = "Elon Musk and his revolutionary quantum-teleporting Tesla Model 12"
+            view.messageLabel.text = "Elon Musk reveals his next big project. The revolutionary new quantum teleporting Tesla Model 12! 🚗🚙🚗"
             
             bulletin = BulletinView.notification()
             bulletin.style.roundedCornerRadius = 8
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
+            
+            if UIDevice.current.isPhoneX {
+                bulletin.style.roundedCornerRadius = 18
+                bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 14, vertical: UIScreen.main.displayFeatureInsets.top + 4)
+            }
+            
             bulletin.embed(content: view)
                         
         case .banner:
@@ -61,15 +67,53 @@ class RootViewController: UIViewController {
             
         case .statusBar:
             
-            let view = UILabel()
-            view.backgroundColor = UIColor.groupTableViewBackground
-            view.text = "Mmmmmm toasty."
-            view.textAlignment = .center
-            view.textColor = UIColor.black
-            view.font = UIFont.boldSystemFont(ofSize: 10)
+            var view: UIView!
             
+            if !UIDevice.current.isPhoneX {
+                
+                view = UILabel()
+                view.backgroundColor = UIColor.groupTableViewBackground
+                (view as! UILabel).text = "Mmmmmm toasty."
+                (view as! UILabel).textAlignment = .center
+                (view as! UILabel).textColor = UIColor.black
+                (view as! UILabel).font = UIFont.boldSystemFont(ofSize: 10)
+                
+            }
+            else {
+                
+                view = UIView()
+                view.backgroundColor = UIColor.groupTableViewBackground
+                
+                let labelWidth = ((UIScreen.main.bounds.width - UIScreen.main.notch!.width) / 2)
+                
+                let leftLabel = UILabel()
+                leftLabel.backgroundColor = UIColor.clear
+                leftLabel.text = "😍"
+                leftLabel.textAlignment = .center
+                leftLabel.textColor = UIColor.black
+                leftLabel.font = UIFont.boldSystemFont(ofSize: 24)
+                view.addSubview(leftLabel)
+                leftLabel.snp.makeConstraints { (make) in
+                    make.left.top.bottom.equalTo(0)
+                    make.width.equalTo(labelWidth)
+                }
+                
+                let rightLabel = UILabel()
+                rightLabel.backgroundColor = UIColor.clear
+                rightLabel.text = "😘"
+                rightLabel.textAlignment = .center
+                rightLabel.textColor = UIColor.black
+                rightLabel.font = UIFont.boldSystemFont(ofSize: 24)
+                view.addSubview(rightLabel)
+                rightLabel.snp.makeConstraints { (make) in
+                    make.right.top.bottom.equalTo(0)
+                    make.width.equalTo(labelWidth)
+                }
+                
+            }
+
             bulletin = BulletinView.statusBar()
-            bulletin.embed(content: view, usingStrictHeight: 20)
+            bulletin.embed(content: view, usingStrictHeight: UIApplication.shared.statusBarFrame.height)
             
         case .alert:
             
@@ -94,12 +138,27 @@ class RootViewController: UIViewController {
             
             let view = SheetView()
             view.delegate = self
+
+            var bottomInset = UIScreen.main.displayFeatureInsets.bottom + 4
+            if !UIDevice.current.isPhoneX {
+                bottomInset += 4
+            }
             
             bulletin = BulletinView.sheet()
-            bulletin.style.verticalEdgeOffset = 14
-            bulletin.style.horizontalEdgeOffset = 14
+            bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: bottomInset)
             bulletin.style.shadowAlpha = 0
             bulletin.embed(content: view)
+        
+        case .notch:
+            
+            let view = NotchView()
+            view.titleLabel.text = "Hello, iPhone X"
+            
+            let height = ((UIApplication.shared.statusBarFrame.height + 44) - 14)
+            
+            bulletin = BulletinView.banner()
+            bulletin.style.edgeInsets = UIEdgeInsets(horizontal: UIScreen.main.notch!.frame.origin.x, vertical: 0)
+            bulletin.embed(content: view, usingStrictHeight: height)
             
         }
         
@@ -118,6 +177,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         case alert
         case hud
         case sheet
+        case notch
     }
     
     enum BackgroundEffectRow: Int {
@@ -144,7 +204,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-        case 0: return 6
+        case 0: return UIDevice.current.isPhoneX ? 7 : 6
         case 1: return 3
         case 2: return 1
         default: return 0
@@ -168,6 +228,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
             case .alert: cell?.textLabel?.text = "Alert"
             case .hud: cell?.textLabel?.text = "HUD"
             case .sheet: cell?.textLabel?.text = "Sheet"
+            case .notch: cell?.textLabel?.text = "Notch"
             }
             
             return cell ?? UITableViewCell()

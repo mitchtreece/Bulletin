@@ -74,14 +74,14 @@ internal class BulletinViewController: UIViewController {
         view.addSubview(bulletin)
         bulletin.snp.makeConstraints { (make) in
             
-            make.left.equalTo(bulletin.style.horizontalEdgeOffset)
-            make.right.equalTo(-bulletin.style.horizontalEdgeOffset)
+            make.left.equalTo(bulletin.style.edgeInsets.left)
+            make.right.equalTo(-bulletin.style.edgeInsets.right)
             
             if bulletin.position == .top {
-                make.top.equalTo(bulletin.style.verticalEdgeOffset)
+                make.top.equalTo(bulletin.style.edgeInsets.top)
             }
             else if bulletin.position == .bottom {
-                make.bottom.equalTo(-bulletin.style.verticalEdgeOffset)
+                make.bottom.equalTo(-bulletin.style.edgeInsets.bottom)
             }
             else if bulletin.position == .center {
                 make.center.equalTo(view)
@@ -100,7 +100,8 @@ internal class BulletinViewController: UIViewController {
             bulletin.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         }
         else {
-            let yOffset = (bulletin.bounds.height + bulletin.style.verticalEdgeOffset)
+            let inset = (bulletin.position == .top) ? bulletin.style.edgeInsets.top : bulletin.style.edgeInsets.bottom
+            let yOffset = (bulletin.bounds.height + inset)
             let ty = (bulletin.position == .bottom) ? yOffset : -yOffset
             bulletin.transform = CGAffineTransform(translationX: 0, y: ty)
         }
@@ -167,9 +168,10 @@ internal class BulletinViewController: UIViewController {
             
         }
         else {
-                        
+            
+            let inset = (bulletin.position == .top) ? bulletin.style.edgeInsets.top : bulletin.style.edgeInsets.bottom
             let shadowOffset = (bulletin.style.shadowRadius + bulletin.style.shadowOffset.height)
-            let yOffset = (bulletin.bounds.height + bulletin.style.verticalEdgeOffset + shadowOffset)
+            let yOffset = (bulletin.bounds.height + inset + shadowOffset)
             let ty = (bulletin.position == .bottom) ? yOffset : -yOffset
             let normalizedVelocity = ((-1 * velocity) / ty)
             

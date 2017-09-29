@@ -59,9 +59,14 @@
     
     BulletinView *bulletin = [BulletinView notification];
     [bulletin setPosition:kBulletinViewPositionBottom];
-    [bulletin setHorizontalEdgeOffset:8 verticalEdgeOffset:8];
     [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
     [bulletin embedContent:view];
+    
+    if ([UIDevice currentDevice].isPhoneX) {
+        [bulletin setCornerRadius:18];
+        [bulletin setEdgeInsets:UIEdgeInsetsMake(0, 14, [UIScreen mainScreen].displayFeatureInsets.bottom + 4, 14)];
+    }
+    
     [bulletin presentAfter:delay];
     
 }
