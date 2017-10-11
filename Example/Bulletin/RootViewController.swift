@@ -25,6 +25,37 @@ class RootViewController: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        let item = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapBarItem(_:)))
+        navigationItem.rightBarButtonItem = item
+        
+    }
+    
+    @objc private func didTapBarItem(_ sender: UIBarButtonItem) {
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(didTapTestView(_:)))
+        view.addGestureRecognizer(recognizer)
+        
+        let bulletin = BulletinView()
+        bulletin.level = .statusBar
+        bulletin.duration = .forever
+        bulletin.position = .center
+        bulletin.style.backgroundEffect = .darken(alpha: 0.6)
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 24, vertical: 12)
+        bulletin.embed(content: view, usingStrictHeight: 300)
+        
+        bulletin.present()
+        
+    }
+    
+    @objc private func didTapTestView(_ recognizer: UITapGestureRecognizer) {
+        
+        let alert = UIAlertController(title: "Bulletin", message: "Hello, world", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+                
     }
     
     fileprivate func bulletin(for row: BulletinRow) -> BulletinView {
