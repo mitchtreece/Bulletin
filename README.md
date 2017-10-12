@@ -171,7 +171,7 @@ var homeGrabber: UIHomeGrabber?
 
 Most of these are self-explanatory. However, two new classes: `UINotch` & `UIHomeGrabber` have been added, and are accessible on the current `UIScreen`. These new classes provide position & sizing information related to the new top-notch & bottom home-grabber on the iPhone X.
 
-By default, all of Bulletin's default style options now use `displayFeatureInsets` so edge insets will be set correctly on any device. You can also do this manually if you wish to customize a bulletin's edge insets:
+By default, all of Bulletin's default style options now use `displayFeatureInsets` so bulletin insets will be set correctly on any device. You can also do this manually if you wish to customize a bulletin's insets:
 
 ```swift
 bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: UIScreen.main.displayFeatureInsets.top + 20)
