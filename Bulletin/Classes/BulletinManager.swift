@@ -23,6 +23,9 @@ internal class BulletinManager {
     
     private init() {
         
+        // Swizzle UIViewController's present() function
+        // so we can properly handle bulletin window levels
+        
         UIViewController.bulletin_swizzlePresent()
         
     }

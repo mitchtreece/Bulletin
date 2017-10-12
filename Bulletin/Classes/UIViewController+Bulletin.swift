@@ -28,6 +28,9 @@ internal extension UIViewController {
     
     class func bulletin_swizzlePresent() {
         
+        // Swap implementations of our orig_present()
+        // function and the native present() function
+        
         let orig = class_getInstanceMethod(UIViewController.self, #selector(present(_:animated:completion:)))!
         let swizzled = class_getInstanceMethod(UIViewController.self, #selector(orig_present(_:animated:completion:)))!
         method_exchangeImplementations(orig, swizzled)

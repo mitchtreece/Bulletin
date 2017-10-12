@@ -76,6 +76,7 @@ public extension BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .center
+        bulletin.level = .alert
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 50, vertical: 0)
@@ -92,6 +93,7 @@ public extension BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .center
+        bulletin.level = .alert
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.edgeInsets = UIEdgeInsets(horizontal: (UIScreen.main.bounds.width / 3), vertical: 0)
@@ -111,9 +113,11 @@ public extension BulletinView {
         bulletin.position = .bottom
         bulletin.duration = .forever
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
-        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8))
         bulletin.style.isStretchingEnabled = false
         bulletin.style.isAnimatedTouchEnabled = false
+        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8,
+                                                 vertical: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8))
+        
         return bulletin
         
     }

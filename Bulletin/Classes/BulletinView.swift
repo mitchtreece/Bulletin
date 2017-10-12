@@ -249,13 +249,13 @@ public class BulletinView: UIView {
      */
     public enum Level: CGFloat {
         
-        /// Bulletins at this level appear under the status bar & alerts.
+        /// Bulletins with this level appear under the status bar & alerts.
         case `default` = 0
         
-        /// Bulletins at this level appear over the status bar, but under alerts.
+        /// Bulletins with this level appear over the status bar, but under alerts.
         case statusBar = 1000
         
-        /// Bulletins at this level appear over the status bar & alerts.
+        /// Bulletins with this level appear over the status bar & alerts.
         case alert = 2000
         
     }
