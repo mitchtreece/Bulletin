@@ -14,15 +14,20 @@ internal class BulletinManager {
     
     static let shared = BulletinManager()
     
-    private var bulletinWindow: BulletinWindow?
+    private(set) var bulletinWindow: BulletinWindow?
     private var bulletinViewController: BulletinViewController?
-    private var bulletinView: BulletinView?
+    private(set) var bulletinView: BulletinView?
     
     fileprivate var timer: Timer?
     private var soundPlayer: AVAudioPlayer?
     
     private init() {
-        //
+        
+        // Swizzle UIViewController's present() function
+        // so we can properly handle bulletin window levels
+        
+        UIViewController.bulletin_swizzlePresent()
+        
     }
     
     func present(_ bulletin: BulletinView, after delay: TimeInterval = 0) {
