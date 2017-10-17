@@ -391,12 +391,16 @@ public class BulletinView: UIView {
      The bulletin's appearance delegate. Provides various appearance information (i.e. `bulletinWillAppear()`, `bulletinWillDisappear()`, etc).
      */
     public weak var appearanceDelegate: BulletinViewAppearanceDelegate?
-    
     internal weak var _delegate: BulletinViewDelegate?
+    
+    /**
+     The bulletin's embedded content view.
+     */
+    public private(set) weak var view: UIView?
+    internal var contentView: UIView!
     
     private var shadowLayer: CAShapeLayer!
     private var shadowMask: CAShapeLayer!
-    internal var contentView: UIView!
     
     private var tapRecognizer: UITapGestureRecognizer?
     
@@ -500,6 +504,8 @@ public class BulletinView: UIView {
             }
             
         }
+        
+        view = content
         
     }
     
