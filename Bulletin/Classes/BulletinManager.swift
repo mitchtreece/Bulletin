@@ -164,15 +164,14 @@ extension BulletinManager: BulletinViewDelegate {
     
     func bulletinViewDidEndPanning(_ bulletin: BulletinView, withTranslation translation: CGPoint, velocity: CGPoint) {
         
-        let threshold = bulletin.position == .top ? -(bulletin.bounds.height / 1.7) : (bulletin.bounds.height / 1.7)
+        let threshold = (bulletin.style.edgeInsets.top + (bulletin.bounds.height / 2))
+        let velocityLimit: CGFloat = 500
+        let yTranslation = abs(translation.y)
+        let yVelocity = abs(velocity.y)
         
-        if bulletin.position == .top && (translation.y <= threshold || velocity.y <= -1200) {
-            
-            dismissCurrentBulletin(velocity: velocity.y)
-            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
-            
-        }
-        else if bulletin.position == .bottom && (translation.y >= threshold || velocity.y >= 1200) {
+        // print("translation = \(yTranslation)/\(threshold), velocity = \(yVelocity)/\(velocityLimit)")
+        
+        if yTranslation >= threshold || yVelocity >= velocityLimit {
             
             dismissCurrentBulletin(velocity: velocity.y)
             bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
