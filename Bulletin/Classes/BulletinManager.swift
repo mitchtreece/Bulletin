@@ -100,6 +100,10 @@ internal class BulletinManager {
         bulletinWindow!.windowLevel = bulletin.level.rawValue
         bulletinWindow!.isHidden = false
         
+        if let keyboardWindow = UIApplication.shared.currentKeyboardWindow, bulletin.level == .keyboard {
+            keyboardWindow.addSubview(bulletinWindow!)
+        }
+        
         bulletinViewController = BulletinViewController()
         bulletinViewController!.bulletin = bulletin
         bulletinViewController!.previousStatusBarStyle = UIApplication.shared.currentStatusBarAppearance.style
