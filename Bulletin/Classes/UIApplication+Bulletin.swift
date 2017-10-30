@@ -35,4 +35,16 @@ internal extension UIApplication {
         
     }
     
+    var currentKeyboardWindow: UIWindow? {
+
+        for window in UIApplication.shared.windows {
+            if NSStringFromClass(window.classForCoder) == "UIRemoteKeyboardWindow" {
+                return window
+            }
+        }
+        
+        return nil
+        
+    }
+    
 }

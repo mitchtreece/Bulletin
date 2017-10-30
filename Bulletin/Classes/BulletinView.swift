@@ -249,14 +249,17 @@ public class BulletinView: UIView {
      */
     public enum Level: CGFloat {
         
-        /// Bulletins with this level appear under the status bar & alerts.
+        /// Bulletins with this level appear under the status bar, alerts, & keyboards.
         case `default` = 0
         
-        /// Bulletins with this level appear over the status bar, but under alerts.
+        /// Bulletins with this level appear over the status bar, but under alerts & keyboards.
         case statusBar = 1000
         
-        /// Bulletins with this level appear over the status bar & alerts.
+        /// Bulletins with this level appear over the status bar & alerts, but under keyboards.
         case alert = 2000
+        
+        /// Bulletins with this level appear over the status bar, alerts, & any visible keyboards.
+        case keyboard = 20000000
         
     }
     
@@ -572,6 +575,8 @@ public class BulletinView: UIView {
         let velocity = recognizer.velocity(in: superView)
         let translation = recognizer.translation(in: superView)
         let ty = translation.y
+        
+        // print("Pan translation: \(ty), velocity: \(velocity.y)")
         
         let touchScale: CGFloat = style.isAnimatedTouchEnabled ? 0.98 : 1
         
