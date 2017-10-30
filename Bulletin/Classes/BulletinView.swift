@@ -576,6 +576,8 @@ public class BulletinView: UIView {
         let translation = recognizer.translation(in: superView)
         let ty = translation.y
         
+        // print("Pan translation: \(ty), velocity: \(velocity.y)")
+        
         let touchScale: CGFloat = style.isAnimatedTouchEnabled ? 0.98 : 1
         
         switch recognizer.state {
