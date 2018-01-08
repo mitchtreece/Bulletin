@@ -42,6 +42,7 @@ class RootViewController: UIViewController {
             view.messageLabel.text = "Elon Musk reveals his next big project. The revolutionary new quantum teleporting Tesla Model 12! 🚗🚙🚗"
             
             bulletin = BulletinView.notification()
+            bulletin.priority = .required
             bulletin.style.roundedCornerRadius = 8
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
@@ -62,8 +63,8 @@ class RootViewController: UIViewController {
             view.messageLabel.text = "I’m the Dude, so that’s what you call me. That or, uh His Dudeness, or uh Duder, or El Duderino, if you’re not into the whole brevity thing. 😎"
             
             bulletin = BulletinView.banner()
-            bulletin.style.statusBar = .lightContent
             bulletin.priority = .required
+            bulletin.style.statusBar = .lightContent
             bulletin.embed(content: view)
             
         case .statusBar:
@@ -114,6 +115,7 @@ class RootViewController: UIViewController {
             }
 
             bulletin = BulletinView.statusBar()
+            bulletin.priority = .required
             bulletin.embed(content: view, usingStrictHeight: UIApplication.shared.statusBarFrame.height)
             
         case .alert:
@@ -125,6 +127,7 @@ class RootViewController: UIViewController {
             view.delegate = self
             
             bulletin = BulletinView.alert()
+            bulletin.priority = .required
             bulletin.style.isBackgroundDismissEnabled = false
             bulletin.embed(content: view)
             
@@ -132,6 +135,7 @@ class RootViewController: UIViewController {
             
             let view = HudView()
             bulletin = BulletinView.hud()
+            bulletin.priority = .required
             bulletin.duration = .limit(2)
             bulletin.snp_embed(content: view, usingStrictHeightConstraint: view.snp.width)
             
@@ -146,6 +150,7 @@ class RootViewController: UIViewController {
             }
             
             bulletin = BulletinView.sheet()
+            bulletin.priority = .required
             bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: bottomInset)
             bulletin.style.shadowAlpha = 0
             bulletin.embed(content: view)
@@ -158,6 +163,7 @@ class RootViewController: UIViewController {
             let height = ((UIApplication.shared.statusBarFrame.height + 44) - 14)
             
             bulletin = BulletinView.banner()
+            bulletin.priority = .required
             bulletin.style.edgeInsets = UIEdgeInsets(horizontal: UIScreen.main.notch!.frame.origin.x, vertical: 0)
             bulletin.embed(content: view, usingStrictHeight: height)
             
