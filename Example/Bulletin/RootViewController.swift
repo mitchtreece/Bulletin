@@ -63,6 +63,7 @@ class RootViewController: UIViewController {
             
             bulletin = BulletinView.banner()
             bulletin.style.statusBar = .lightContent
+            bulletin.priority = .required
             bulletin.embed(content: view)
             
         case .statusBar:

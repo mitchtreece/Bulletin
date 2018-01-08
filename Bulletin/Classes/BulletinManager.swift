@@ -49,7 +49,7 @@ internal class BulletinQueue: CustomStringConvertible, CustomDebugStringConverti
         }
         else if let _bulletin = lastLower, let idx = bulletins.index(of: _bulletin) {
             
-            bulletins.insert(bulletin, at: (idx + 1))
+            bulletins.insert(bulletin, at: (idx))
             
         }
         else {
@@ -65,6 +65,7 @@ internal class BulletinQueue: CustomStringConvertible, CustomDebugStringConverti
     
     @discardableResult
     func pop() -> BulletinView? {
+        guard !bulletins.isEmpty else { return nil }
         return bulletins.removeLast()
     }
     
@@ -136,7 +137,7 @@ internal class BulletinManager {
             
             // Dismiss popped bulletin & present next in queue
             
-            dismiss(popped, completion: { [weak self] in
+            dismiss(popped, shouldPopAndPresentNext: false, completion: { [weak self] in
                 guard let _self = self, let next = _self.queue.top else { return }
                 _self.present(bulletin: next, popped: true)
             })
@@ -188,12 +189,14 @@ internal class BulletinManager {
         queue.pop()
         
         guard let next = queue.top else { return }
-
         present(bulletin: next, popped: true)
         
     }
     
-    internal func dismiss(_ bulletin: BulletinView, velocity: CGFloat = 0.3, completion: (()->())? = nil) {
+    internal func dismiss(_ bulletin: BulletinView,
+                          velocity: CGFloat = 0.3,
+                          shouldPopAndPresentNext: Bool = true,
+                          completion: (()->())? = nil) {
         
         // Invalidate timer
         
@@ -203,7 +206,17 @@ internal class BulletinManager {
         // Animate bullet in out
         
         bulletin.appearanceDelegate?.bulletinViewWillDisappear?(bulletin)
-        _animateBulletinOut(bulletin, velocity: velocity, completion: completion)
+        // _animateBulletinOut(bulletin, velocity: velocity, completion: completion)
+        
+        _animateBulletinOut(bulletin, velocity: velocity) { [weak self] in
+            
+            completion?()
+            
+            if shouldPopAndPresentNext {
+                self?.popAndPresentNextBulletinIfNeeded()
+            }
+            
+        }
         
     }
     
@@ -252,9 +265,8 @@ internal class BulletinManager {
         guard let info = timer.userInfo as? [String: Any],
             let bulletin = info["bulletin"] as? BulletinView else { return }
         
-        dismiss(bulletin) { [weak self] in
+        dismiss(bulletin) {
             bulletin.appearanceDelegate?.bulletinViewWasAutomaticallyDismissed?(bulletin)
-            self?.popAndPresentNextBulletinIfNeeded()
         }
         
     }
@@ -269,15 +281,9 @@ extension BulletinManager: BulletinViewDelegate {
         
         bulletin.tapticFeedback(for: bulletin.taptics.action)
         
-        dismiss(bulletin) { [weak self] in
+        dismiss(bulletin) {
             action()
-            self?.popAndPresentNextBulletinIfNeeded()
         }
-        
-//        dismissCurrentBulletin {
-//            self.dismissCurrentBulletin()
-//            action()
-//        }
         
     }
     
@@ -299,9 +305,8 @@ extension BulletinManager: BulletinViewDelegate {
         
         if yTranslation >= maxTranslation || yVelocity >= maxVelocity {
             
-            dismiss(bulletin, velocity: velocity.y, completion: { [weak self] in
+            dismiss(bulletin, velocity: velocity.y, completion: {
                 bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
-                self?.popAndPresentNextBulletinIfNeeded()
             })
             
         }
