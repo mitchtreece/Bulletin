@@ -58,6 +58,7 @@
     view.messageLabel.text = @"Hey look! Bulletin works with objc too! That's cool, but you really should just start using Swift 🙄.";
     
     BulletinView *bulletin = [BulletinView notification];
+    [bulletin setDelay:delay];
     [bulletin setPosition:kBulletinViewPositionBottom];
     [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
     [bulletin embedContent:view];
@@ -67,7 +68,7 @@
         [bulletin setEdgeInsets:UIEdgeInsetsMake(0, 14, [UIScreen mainScreen].displayFeatureInsets.bottom + 4, 14)];
     }
     
-    [bulletin presentAfter:delay];
+    [bulletin present];
     
 }
 

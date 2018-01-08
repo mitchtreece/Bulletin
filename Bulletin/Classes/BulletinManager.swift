@@ -10,14 +10,106 @@ import UIKit
 import AVFoundation
 import SnapKit
 
+internal class BulletinQueue: CustomStringConvertible, CustomDebugStringConvertible {
+    
+    private var bulletins = [BulletinView]()
+    
+    var top: BulletinView? {
+        return bulletins.last
+    }
+    
+    var isEmpty: Bool {
+        return bulletins.isEmpty
+    }
+    
+    @discardableResult
+    func add(_ bulletin: BulletinView) -> BulletinView? {
+        
+        guard bulletin.priority != .required else {
+            
+            let _bulletin = pop()
+            bulletins.append(bulletin)
+            return _bulletin
+            
+        }
+        
+        let lastLower = bulletins.reversed().first(where: { bulletin.priority.rawValue < $0.priority.rawValue })
+        let firstEqual = bulletins.first(where: { bulletin.priority == $0.priority })
+        let firstGreater = bulletins.first(where: { bulletin.priority.rawValue > $0.priority.rawValue })
+        
+        if let _bulletin = firstEqual, let idx = bulletins.index(of: _bulletin) {
+            
+            bulletins.insert(bulletin, at: idx)
+            
+        }
+        else if let _bulletin = firstGreater, let idx = bulletins.index(of: _bulletin) {
+            
+            bulletins.insert(bulletin, at: idx)
+            
+        }
+        else if let _bulletin = lastLower, let idx = bulletins.index(of: _bulletin) {
+            
+            bulletins.insert(bulletin, at: (idx + 1))
+            
+        }
+        else {
+            
+            // Only element. insert.
+            bulletins.append(bulletin)
+            
+        }
+        
+        return nil
+        
+    }
+    
+    @discardableResult
+    func pop() -> BulletinView? {
+        return bulletins.removeLast()
+    }
+    
+    // MARK: CustomStringConvertible
+    
+    var description: String {
+        
+        guard !self.isEmpty else { return "<BulletinQueue - 0 elements>" }
+        
+        var string = ""
+        
+        for b in bulletins {
+            
+            switch b.priority {
+            case .low: string += "L, "
+            case .default: string += "D, "
+            case .high: string += "H, "
+            case .required: string += "R, "
+            }
+            
+        }
+        
+        let index = string.index(string.endIndex, offsetBy: -2)
+        string = String(string[..<index])
+        
+        return "<BulletinQueue - \(bulletins.count) elements, [\(string)]>"
+        
+    }
+    
+    var debugDescription: String {
+        return description
+    }
+    
+}
+
 internal class BulletinManager {
     
     static let shared = BulletinManager()
     
     private(set) var bulletinWindow: BulletinWindow?
     private var bulletinViewController: BulletinViewController?
-    private(set) var bulletinView: BulletinView?
     
+    private(set) var queue = BulletinQueue()
+    private(set) var currentBulletin: BulletinView?
+
     fileprivate var timer: Timer?
     private var soundPlayer: AVAudioPlayer?
     
@@ -30,43 +122,60 @@ internal class BulletinManager {
         
     }
     
-    func present(_ bulletin: BulletinView, after delay: TimeInterval = 0) {
+    func enqueue(_ bulletin: BulletinView) {
+        
+        guard !queue.isEmpty else {
+            
+            queue.add(bulletin)
+            present(bulletin: bulletin)
+            return
+            
+        }
+        
+        if let popped = queue.add(bulletin) {
+            
+            // Dismiss popped bulletin & present next in queue
+            
+            dismiss(popped, completion: { [weak self] in
+                guard let _self = self, let next = _self.queue.top else { return }
+                _self.present(bulletin: next, popped: true)
+            })
+            
+        }
+        
+    }
+    
+    private func present(bulletin: BulletinView, popped: Bool = false) {
+        
+        let delay: TimeInterval = popped ? 0 : bulletin.delay
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             
             guard let _self = self else { return }
             
-            if let _ = _self.bulletinView {
-                
-                // Already displaying a bulletin,
-                // dismiss and call present again
-                
-                _self.dismissCurrentBulletin(completion: {
-                    _self.present(bulletin)
-                })
-                
+            bulletin._delegate = self
+            bulletin.soundEffectPlayer?.play()
+            bulletin.tapticFeedback(for: bulletin.taptics.presentation)
+            
+            _self.timer?.invalidate()
+            _self.currentBulletin = bulletin
+            _self._animateBulletinIn(bulletin)
+            
+            // Needs to be called after animateBulletinIn() so frame is set correctly
+            bulletin.appearanceDelegate?.bulletinViewWillAppear?(bulletin)
+
+            var duration: TimeInterval = 0
+            if case .limit(let time) = bulletin.duration {
+                duration = time
             }
-            else {
+
+            if duration > 0 {
                 
-                bulletin._delegate = self
-                bulletin.soundEffectPlayer?.play()
-                bulletin.tapticFeedback(for: bulletin.taptics.presentation)
-                
-                _self.timer?.invalidate()
-                _self.bulletinView = bulletin
-                _self.animateBulletinIn(bulletin)
-                
-                // Needs to be called after animateBulletinIn() so frame is set correctly
-                bulletin.appearanceDelegate?.bulletinViewWillAppear?(bulletin)
-                
-                var duration: TimeInterval = 0
-                if case .limit(let time) = bulletin.duration {
-                    duration = time
-                }
-                
-                if duration > 0 {
-                    _self.timer = Timer.scheduledTimer(timeInterval: duration, target: _self, selector: #selector(_self.bulletinTimerDidFire(_:)), userInfo: ["bulletin": bulletin], repeats: false)
-                }
+                _self.timer = Timer.scheduledTimer(timeInterval: duration,
+                                                   target: _self,
+                                                   selector: #selector(_self.bulletinTimerDidFire(_:)),
+                                                   userInfo: ["bulletin": bulletin],
+                                                   repeats: false)
                 
             }
             
@@ -74,26 +183,51 @@ internal class BulletinManager {
         
     }
     
-    func dismissCurrentBulletin(withDuration duration: TimeInterval = 0.4, damping: CGFloat = 0.8, velocity: CGFloat = 0.3, completion: (()->())? = nil) {
+    private func popAndPresentNextBulletinIfNeeded() {
         
-        guard let cbv = bulletinView else { return }
+        queue.pop()
+        
+        guard let next = queue.top else { return }
+
+        present(bulletin: next, popped: true)
+        
+    }
+    
+    internal func dismiss(_ bulletin: BulletinView, velocity: CGFloat = 0.3, completion: (()->())? = nil) {
+        
+        // Invalidate timer
         
         timer?.invalidate()
         timer = nil
         
-        cbv.appearanceDelegate?.bulletinViewWillDisappear?(cbv)
-        animateCurrentBulletinOut(withDuration: duration, damping: damping, velocity: velocity, completion: completion)
+        // Animate bullet in out
+        
+        bulletin.appearanceDelegate?.bulletinViewWillDisappear?(bulletin)
+        _animateBulletinOut(bulletin, velocity: velocity, completion: completion)
         
     }
     
-    func dismiss(_ bulletin: BulletinView) {
+    fileprivate func _animateBulletinOut(_ bulletin: BulletinView, velocity: CGFloat, completion: (()->())?) {
         
-        guard let cbv = bulletinView, cbv == bulletin else { return }
-        dismissCurrentBulletin()
+        bulletinViewController?.animateOut(withDuration: 0.4, damping: 0.8, velocity: velocity, completion: {
+            
+            self.currentBulletin?.removeFromSuperview()
+            self.currentBulletin = nil
+            
+            self.bulletinViewController?.view.removeFromSuperview()
+            self.bulletinViewController = nil
+            
+            self.bulletinWindow?.removeFromSuperview()
+            self.bulletinWindow?.isHidden = true
+            self.bulletinWindow = nil
+            
+            completion?()
+            
+        })
         
     }
     
-    private func animateBulletinIn(_ bulletin: BulletinView) {
+    fileprivate func _animateBulletinIn(_ bulletin: BulletinView) {
                 
         bulletinWindow = BulletinWindow()
         bulletinWindow!.backgroundColor = UIColor.clear
@@ -113,33 +247,15 @@ internal class BulletinManager {
         
     }
     
-    fileprivate func animateCurrentBulletinOut(withDuration duration: TimeInterval, damping: CGFloat, velocity: CGFloat, completion: (()->())?) {
-        
-        bulletinViewController?.animateOut(withDuration: duration, damping: damping, velocity: velocity, completion: {
-            
-            self.bulletinView?.removeFromSuperview()
-            self.bulletinView = nil
-            
-            self.bulletinViewController?.view.removeFromSuperview()
-            self.bulletinViewController = nil
-            
-            self.bulletinWindow?.removeFromSuperview()
-            self.bulletinWindow?.isHidden = true
-            self.bulletinWindow = nil
-            
-            completion?()
-            
-        })
-        
-    }
-    
     @objc fileprivate func bulletinTimerDidFire(_ timer: Timer) {
         
         guard let info = timer.userInfo as? [String: Any],
             let bulletin = info["bulletin"] as? BulletinView else { return }
         
-        dismissCurrentBulletin()
-        bulletin.appearanceDelegate?.bulletinViewWasAutomaticallyDismissed?(bulletin)
+        dismiss(bulletin) { [weak self] in
+            bulletin.appearanceDelegate?.bulletinViewWasAutomaticallyDismissed?(bulletin)
+            self?.popAndPresentNextBulletinIfNeeded()
+        }
         
     }
     
@@ -153,10 +269,15 @@ extension BulletinManager: BulletinViewDelegate {
         
         bulletin.tapticFeedback(for: bulletin.taptics.action)
         
-        dismissCurrentBulletin {
-            self.dismissCurrentBulletin()
+        dismiss(bulletin) { [weak self] in
             action()
+            self?.popAndPresentNextBulletinIfNeeded()
         }
+        
+//        dismissCurrentBulletin {
+//            self.dismissCurrentBulletin()
+//            action()
+//        }
         
     }
     
@@ -178,8 +299,10 @@ extension BulletinManager: BulletinViewDelegate {
         
         if yTranslation >= maxTranslation || yVelocity >= maxVelocity {
             
-            dismissCurrentBulletin(velocity: velocity.y)
-            bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
+            dismiss(bulletin, velocity: velocity.y, completion: { [weak self] in
+                bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
+                self?.popAndPresentNextBulletinIfNeeded()
+            })
             
         }
         else {
@@ -191,8 +314,15 @@ extension BulletinManager: BulletinViewDelegate {
                 
                 // Presented with a spring, snap back with one
                 
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.4, options: [.curveEaseOut], animations: {
+                UIView.animate(withDuration: 0.3,
+                               delay: 0,
+                               usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 0.4,
+                               options: [.curveEaseOut],
+                               animations: {
+                                
                     bulletin.transform = CGAffineTransform.identity
+                                
                 }, completion: nil)
                 
             }
@@ -207,6 +337,8 @@ extension BulletinManager: BulletinViewDelegate {
             if bulletin.style.isStretchingEnabled {
                 bulletin.tapticFeedback(for: bulletin.taptics.snapping)
             }
+            
+            // Reset timer
                         
             var duration: TimeInterval = 0
             if case .limit(let time) = bulletin.duration {
@@ -214,7 +346,13 @@ extension BulletinManager: BulletinViewDelegate {
             }
             
             if duration > 0 {
-                timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(bulletinTimerDidFire(_:)), userInfo: ["bulletin": bulletin], repeats: false)
+                
+                timer = Timer.scheduledTimer(timeInterval: duration,
+                                             target: self,
+                                             selector: #selector(bulletinTimerDidFire(_:)),
+                                             userInfo: ["bulletin": bulletin],
+                                             repeats: false)
+                
             }
 
         }

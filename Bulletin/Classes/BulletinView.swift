@@ -263,6 +263,13 @@ public class BulletinView: UIView {
         
     }
     
+    public enum Priority: Int {
+        case low = 0
+        case `default` = 1
+        case high = 2
+        case required = 3
+    }
+    
     /**
      Enum representing a bulletin's on-screen duration.
      */
@@ -311,12 +318,16 @@ public class BulletinView: UIView {
      */
     public var duration: Duration = .limit(5)
     
+    public var delay: TimeInterval = 0
+    
     /**
      The bulletin's window level.
      
      Defaults to `default`.
      */
     public var level: Level = .default
+    
+    public var priority: Priority = .default
     
     /**
      The bulletin's info dictionary. This can be used to pass relevant information along with bulletins.
@@ -514,11 +525,10 @@ public class BulletinView: UIView {
     
     /**
      Presents the bulletin.
-     - parameter delay: The ammount of time (in seconds) to delay the bulletin's presentation. Defaults to `0`.
      */
-    public func present(after delay: TimeInterval = 0) {
+    public func present() {
         
-        BulletinManager.shared.present(self, after: delay)
+        BulletinManager.shared.enqueue(self)
         
     }
     
@@ -627,3 +637,27 @@ extension BulletinView: UIGestureRecognizerDelegate {
     }
     
 }
+
+extension BulletinView /* Debug */ {
+ 
+    public override var description: String {
+        
+        var priorityText: String
+        
+        switch self.priority {
+        case .low: priorityText = "low"
+        case .default: priorityText = "default"
+        case .high: priorityText = "high"
+        case .required: priorityText = "required"
+        }
+        
+        return "<BulletinView - priority: \(priorityText)>"
+        
+    }
+    
+    public override var debugDescription: String {
+        return description
+    }
+ 
+}
+ 

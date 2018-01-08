@@ -13,7 +13,7 @@ internal extension UIViewController {
         
         guard let window = BulletinManager.shared.bulletinWindow,
             let rootVC = window.rootViewController,
-            let cbv = BulletinManager.shared.bulletinView,
+            let cbv = BulletinManager.shared.currentBulletin,
             viewControllerToPresent is UIAlertController,
             (cbv.level.rawValue < BulletinView.Level.alert.rawValue) else {
                 

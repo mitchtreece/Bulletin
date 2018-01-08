@@ -200,7 +200,7 @@ internal class BulletinViewController: UIViewController {
     @objc private func didTapBackgroundEffectView(_ recognizer: UITapGestureRecognizer) {
         
         guard let bulletin = bulletin, bulletin.style.isBackgroundDismissEnabled == true else { return }
-        BulletinManager.shared.dismissCurrentBulletin()
+        BulletinManager.shared.dismiss(bulletin)
         bulletin.appearanceDelegate?.bulletinViewWasInteractivelyDismissed?(bulletin)
         
     }

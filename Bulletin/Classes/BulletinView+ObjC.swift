@@ -111,16 +111,6 @@ public extension BulletinView /* ObjC */ {
     }
     
     /**
-     Presents the bulletin.
-     */
-    @available(swift 1000)
-    public func present() {
-        
-        self.present(after: 0)
-        
-    }
-    
-    /**
      Embeds a content view into the bulletin using the view's intrinsic content height.
      - parameter content: The content view to embed.
      */
