@@ -263,11 +263,24 @@ public class BulletinView: UIView {
         
     }
     
+    /**
+     Enum representing a bulletin's presentation priority in the queue.
+     */
     public enum Priority: Int {
+        
+        /// Bulletins with this level are presented after default, high, & required bulletins.
         case low = 0
+        
+        /// Bulletins with this level are presented after high & required bulletins.
         case `default` = 1
+        
+        /// Bulletins with this level are presented after required bulletins.
         case high = 2
+        
+        /// Bulletins with this level are presented immediately.
+        /// If another bulletin is currently being displayed, it will be dismissed.
         case required = 3
+        
     }
     
     /**
@@ -327,6 +340,11 @@ public class BulletinView: UIView {
      */
     public var level: Level = .default
     
+    /**
+     The bulletin's presentation priority.
+     
+     Defaults to `default`.
+     */
     public var priority: Priority = .default
     
     /**
@@ -524,29 +542,25 @@ public class BulletinView: UIView {
     }
     
     /**
-     Presents the bulletin.
+     Adds the bulletin to the presentation queue.
+     The bulletin will be presented either immediately, or at a later time
+     (depending on it's priority level & other bulletins in the queue).
      */
     public func present() {
-        
         BulletinManager.shared.enqueue(self)
-        
     }
     
     /**
      Dismisses the bulletin immediately.
      */
     public func dismiss() {
-        
         BulletinManager.shared.dismiss(self)
-        
     }
     
     // MARK: Private / Internal
     
     @objc private func didTap(_ recognizer: UITapGestureRecognizer) {
-        
         _delegate?.bulletinViewDidTap(self)
-        
     }
     
     @objc private func didPress(_ recognizer: UILongPressGestureRecognizer) {

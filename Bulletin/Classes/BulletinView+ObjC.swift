@@ -65,6 +65,25 @@ public extension BulletinView /* ObjC */ {
     }
     
     /**
+     Sets the bulletin's presentation priority.
+     
+     `0 = low`, `1 = default`, `2 = high`, `3 = required`
+     */
+    @available(swift 1000)
+    @objc(setPriority:)
+    public func set(priority: Int) {
+        
+        switch priority {
+        case 0: self.priority = .low
+        case 1: self.priority = .default
+        case 2: self.priority = .high
+        case 3: self.priority = .required
+        default: self.priority = .default
+        }
+        
+    }
+    
+    /**
      Sets the bulletin's edge insets.
      */
     @available(swift 1000)

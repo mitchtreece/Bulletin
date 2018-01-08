@@ -14,9 +14,16 @@
 
 // Level
 
-#define kBulletinViewLevelDefault  0
+#define kBulletinViewLevelDefault 0
 #define kBulletinViewLevelStatusBar 1000
 #define kBulletinViewLevelAlert 2000
+
+// Priority
+
+#define kBulletinViewPriorityLow 0
+#define kBulletinViewPriorityDefault 1
+#define kBulletinViewPriorityHigh 2
+#define kBulletinViewPriorityRequired 3
 
 // Background Effect
 

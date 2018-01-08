@@ -61,6 +61,7 @@
     [bulletin setDelay:delay];
     [bulletin setPosition:kBulletinViewPositionBottom];
     [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
+    [bulletin setPriority:kBulletinViewPriorityRequired];
     [bulletin embedContent:view];
     
     if ([UIDevice currentDevice].isPhoneX) {
