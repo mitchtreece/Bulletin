@@ -21,9 +21,8 @@
 // Priority
 
 #define kBulletinViewPriorityLow 0
-#define kBulletinViewPriorityDefault 1
-#define kBulletinViewPriorityHigh 2
-#define kBulletinViewPriorityRequired 3
+#define kBulletinViewPriorityHigh 1
+#define kBulletinViewPriorityRequired 2
 
 // Background Effect
 

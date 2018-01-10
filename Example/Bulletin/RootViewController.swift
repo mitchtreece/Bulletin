@@ -63,7 +63,7 @@ class RootViewController: UIViewController {
             view.messageLabel.text = "I’m the Dude, so that’s what you call me. That or, uh His Dudeness, or uh Duder, or El Duderino, if you’re not into the whole brevity thing. 😎"
             
             bulletin = BulletinView.banner()
-            bulletin.priority = .required
+            bulletin.priority = .high
             bulletin.style.statusBar = .lightContent
             bulletin.embed(content: view)
             
@@ -115,7 +115,7 @@ class RootViewController: UIViewController {
             }
 
             bulletin = BulletinView.statusBar()
-            bulletin.priority = .required
+            bulletin.priority = .low
             bulletin.embed(content: view, usingStrictHeight: UIApplication.shared.statusBarFrame.height)
             
         case .alert:

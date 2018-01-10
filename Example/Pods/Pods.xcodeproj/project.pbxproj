@@ -18,6 +18,7 @@
 		24668DB19A4ECDA5FD2F1A902B84D19C /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35E795A4705B4FB474FF417682335F1 /* ConstraintMakerExtendable.swift */; };
 		2525FF7647CB9FC99162FCB7C8094010 /* Pods-Bulletin_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CC1F2B87E300E83362535A65ECD4F9 /* Pods-Bulletin_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		266495CA1F8DB43500C69845 /* UIViewController+Bulletin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266495C91F8DB43500C69845 /* UIViewController+Bulletin.swift */; };
+		2674D43320058F6A00628ACD /* BulletinQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D43220058F6A00628ACD /* BulletinQueue.swift */; };
 		30136CB645FC3B7FDFCD024CBEE533B5 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEC3A047572931F144ED09636B1FCE7 /* BulletinViewController.swift */; };
 		32BCB311996D5F0EB0636DF4B644999A /* BulletinWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B78B6994FF44BE138FA3C41A374CC8A /* BulletinWindow.swift */; };
 		34249B3ECE56B50FEAD183B2F249517F /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09C8BFD80A7988D3B139768116EE2A7 /* ConstraintMakerRelatable.swift */; };
@@ -107,6 +108,7 @@
 		1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		23C4EE941C99C2F663494C43944D63FD /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Source/ConstraintConfig.swift; sourceTree = "<group>"; };
 		266495C91F8DB43500C69845 /* UIViewController+Bulletin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Bulletin.swift"; sourceTree = "<group>"; };
+		2674D43220058F6A00628ACD /* BulletinQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinQueue.swift; sourceTree = "<group>"; };
 		2798FAD1ED522B9041959ED19ED6B3DE /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Source/Constraint.swift; sourceTree = "<group>"; };
 		29CC1F2B87E300E83362535A65ECD4F9 /* Pods-Bulletin_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Bulletin_Example-umbrella.h"; sourceTree = "<group>"; };
 		2BC63229BFFF4A524F7A9E9D6016D4A0 /* Pods-Bulletin_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Bulletin_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				CB4AD99656C9587FCAB68B7441FF7CEE /* Bulletin.h */,
 				61E4E6C6F03F51E0C26568460E3B221A /* Bulletin+iPhoneX.swift */,
 				964807AD89B60EE47E951F8F7F43F0E5 /* Bulletin+SnapKit.swift */,
+				2674D43220058F6A00628ACD /* BulletinQueue.swift */,
 				00A4B424525CED03DBF2C2277D033F87 /* BulletinManager.swift */,
 				787B14EFF0BD08E879FB41D63B68FCB9 /* BulletinView.swift */,
 				9D4C95CA490AB67C024056EA05B0E6A8 /* BulletinView+Common.swift */,
@@ -579,6 +582,7 @@
 			files = (
 				8AB2F304E6DEA2CB8AA9B4DD3A2A7ED4 /* Bulletin+iPhoneX.swift in Sources */,
 				266495CA1F8DB43500C69845 /* UIViewController+Bulletin.swift in Sources */,
+				2674D43320058F6A00628ACD /* BulletinQueue.swift in Sources */,
 				4A3576586A1EE10D67ACE5DDDB8A88AC /* Bulletin+SnapKit.swift in Sources */,
 				6E26369FBAAA408421A87B08CA4DC4F6 /* Bulletin-dummy.m in Sources */,
 				864C7C4995399DC845757ED7826C05B5 /* BulletinManager.swift in Sources */,

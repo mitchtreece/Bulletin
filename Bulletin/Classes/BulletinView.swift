@@ -264,22 +264,19 @@ public class BulletinView: UIView {
     }
     
     /**
-     Enum representing a bulletin's presentation priority in the queue.
+     Enum representing a bulletin's presentation priority.
      */
     public enum Priority: Int {
         
-        /// Bulletins with this level are presented after default, high, & required bulletins.
+        /// Bulletins with this level are presented after high, & required bulletins.
         case low = 0
         
-        /// Bulletins with this level are presented after high & required bulletins.
-        case `default` = 1
-        
         /// Bulletins with this level are presented after required bulletins.
-        case high = 2
+        case high = 1
         
         /// Bulletins with this level are presented immediately.
         /// If another bulletin is currently being displayed, it will be dismissed.
-        case required = 3
+        case required = 2
         
     }
     
@@ -343,9 +340,9 @@ public class BulletinView: UIView {
     /**
      The bulletin's presentation priority.
      
-     Defaults to `default`.
+     Defaults to `low`.
      */
-    public var priority: Priority = .default
+    public var priority: Priority = .low
     
     /**
      The bulletin's info dictionary. This can be used to pass relevant information along with bulletins.
@@ -544,7 +541,20 @@ public class BulletinView: UIView {
     /**
      Adds the bulletin to the presentation queue.
      The bulletin will be presented either immediately, or at a later time
-     (depending on it's priority level & other bulletins in the queue).
+     (depending on it's priority level & other items in the queue).
+     
+     If another bulletin with a lower priority is being displayed,
+     it will be dismissed and the new bulletin will be presented.
+     
+     _Priority examples:_
+     ```
+     [ ] + (L) = [L]
+     [L] + (H) = [H] -- Lower priority dimissed
+     [H] + (L) = [L, H]
+     [L, R] + (H) = [L, H, R]
+     [H, R, R] + (L) = [L, H, R, R]
+     ```
+     **(L)ow, (H)igh, (R)equired**
      */
     public func present() {
         BulletinManager.shared.enqueue(self)
@@ -660,7 +670,6 @@ extension BulletinView /* Debug */ {
         
         switch self.priority {
         case .low: priorityText = "low"
-        case .default: priorityText = "default"
         case .high: priorityText = "high"
         case .required: priorityText = "required"
         }

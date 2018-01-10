@@ -67,7 +67,7 @@ public extension BulletinView /* ObjC */ {
     /**
      Sets the bulletin's presentation priority.
      
-     `0 = low`, `1 = default`, `2 = high`, `3 = required`
+     `0 = low`, `1 = high`, `2 = required`
      */
     @available(swift 1000)
     @objc(setPriority:)
@@ -75,10 +75,9 @@ public extension BulletinView /* ObjC */ {
         
         switch priority {
         case 0: self.priority = .low
-        case 1: self.priority = .default
-        case 2: self.priority = .high
-        case 3: self.priority = .required
-        default: self.priority = .default
+        case 1: self.priority = .high
+        case 2: self.priority = .required
+        default: self.priority = .low
         }
         
     }
