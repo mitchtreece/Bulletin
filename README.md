@@ -97,6 +97,8 @@ let bulletin = BulletinView()
 // Basic options
 
 bulletin.position = .top
+bulletin.level = .alert
+bulletin.priority = .high
 bulletin.duration = .limit(5)
 bulletin.soundEffectUrl = URL(...)
 
@@ -127,6 +129,24 @@ bulletin.taptics.snapping = .impact(.medium)
 ```
 
 ..and many more. For more information regarding specific configuration option usage, refer to the code documentation.
+
+## Priorities
+
+Bulletins are presented based on their respective `priority` level. There are 3 different priority levels a bulletin can have: **low**, **high**, & **required**.
+
+While presenting a bulletin, If another with a lower priority is currently being displayed, it will be dismissed before the new bulletin's presentation is triggered. Bulletins with a `required` priority level will _always_ be presented immediately (dismissing any active bulletins if needed).
+
+**(L)ow, (H)igh, (R)equired**
+
+```
+[ ] + (L) = [L]
+[L] + (H) = [H] -- Lower priority dimissed
+[H] + (L) = [L, H]
+[L, R] + (H) = [L, H, R]
+[H, R, R] + (L) = [L, H, R, R]
+```
+
+By default, bulletins have a `low` priority level.
 
 ## Actions
 
@@ -208,6 +228,7 @@ BulletinView *bulletin = [[BulletinView alloc] init];
 [bulletin setPosition:kBulletinViewPositionTop];
 [bulletin setDuration:5];
 [bulletin setLevel:kBulletinViewLevelDefault];
+[bulletin setPriority:kBulletinViewPriorityHigh];
 [bulletin setEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
 [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
 [bulletin embedContent:contentView];
