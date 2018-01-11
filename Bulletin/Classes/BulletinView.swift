@@ -417,7 +417,8 @@ public class BulletinView: UIView {
     public private(set) var taptics = TapticSettings()
     
     /**
-     The bulletin's appearance delegate. Provides various appearance information (i.e. `bulletinWillAppear()`, `bulletinWillDisappear()`, etc).
+     The bulletin's appearance delegate.
+     Provides various appearance information (i.e. `bulletinWillAppear`, `bulletinWillDisappear`, etc).
      */
     public weak var appearanceDelegate: BulletinViewAppearanceDelegate?
     internal weak var _delegate: BulletinViewDelegate?

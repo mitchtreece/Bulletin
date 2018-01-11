@@ -49,8 +49,8 @@ internal class BulletinQueue: CustomStringConvertible, CustomDebugStringConverti
         if let _bulletin = bulletins.first(where: { $0.priority == bulletin.priority }),
             let idx = bulletins.index(of: _bulletin) {
             
-            // Find the first item in the queue with an equal priority.
-            // We want our new item to be inserted as the first
+            // Find the first item in the array with an equal priority.
+            // We want our new item to be inserted as the last
             // item at a given priority level.
             //
             // --------------------- ↓ ------
@@ -64,7 +64,7 @@ internal class BulletinQueue: CustomStringConvertible, CustomDebugStringConverti
             let idx = bulletins.index(of: _bulletin) {
             
             // Find the first item in the queue with a greater priority.
-            // We want our new item to be inserted before this higher-priority item.
+            // We want our new item to be inserted behind this higher-priority item.
             //
             // ------------------ ↓ ---------
             // [H, H, R] + (L) = [L, H, H, R]
