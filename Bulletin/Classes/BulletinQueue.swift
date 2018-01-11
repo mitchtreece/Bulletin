@@ -23,7 +23,7 @@ internal class BulletinQueue: CustomStringConvertible, CustomDebugStringConverti
     func add(_ bulletin: BulletinView) -> BulletinView? {
         
         func debugLog(for bulletin: BulletinView, index: Int) {
-            print("BulletinQueue - Added bulletin at index: \(index), queue: \(self)")
+            // print("BulletinQueue - Added bulletin at index: \(index), queue: \(self)")
         }
         
         guard bulletin.priority != .required else {

@@ -63,7 +63,7 @@ class RootViewController: UIViewController {
             view.messageLabel.text = "I’m the Dude, so that’s what you call me. That or, uh His Dudeness, or uh Duder, or El Duderino, if you’re not into the whole brevity thing. 😎"
             
             bulletin = BulletinView.banner()
-            bulletin.priority = .high
+            bulletin.priority = .required
             bulletin.style.statusBar = .lightContent
             bulletin.embed(content: view)
             
@@ -115,7 +115,7 @@ class RootViewController: UIViewController {
             }
 
             bulletin = BulletinView.statusBar()
-            bulletin.priority = .low
+            bulletin.priority = .required
             bulletin.embed(content: view, usingStrictHeight: UIApplication.shared.statusBarFrame.height)
             
         case .alert:
@@ -187,6 +187,12 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         case notch
     }
     
+    enum PriorityRow: Int {
+        case required
+        case high
+        case low
+    }
+    
     enum BackgroundEffectRow: Int {
         case none
         case darken
@@ -194,15 +200,16 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         switch section {
         case 0: return "Bulletins"
-        case 1: return "Background Effects"
-        case 2: return "Other"
+        case 1: return "Priorities"
+        case 2: return "Background Effects"
+        case 3: return "Other"
         default: return nil
         }
         
@@ -213,7 +220,8 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0: return UIDevice.current.isPhoneX ? 7 : 6
         case 1: return 3
-        case 2: return 1
+        case 2: return 3
+        case 3: return 1
         default: return 0
         }
         
@@ -243,6 +251,22 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if indexPath.section == 1 {
             
+            guard let row = PriorityRow(rawValue: indexPath.row) else { return UITableViewCell() }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+            cell?.accessoryType = .disclosureIndicator
+            
+            switch row {
+            case .required: cell?.textLabel?.text = "Required"
+            case .high: cell?.textLabel?.text = "High"
+            case .low: cell?.textLabel?.text = "Low"
+            }
+            
+            return cell ?? UITableViewCell()
+            
+        }
+        else if indexPath.section == 2 {
+            
             guard let row = BackgroundEffectRow(rawValue: indexPath.row) else { return UITableViewCell() }
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
@@ -257,7 +281,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
             return cell ?? UITableViewCell()
             
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 3 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
             cell?.textLabel?.text = "Objective-C"
@@ -285,6 +309,35 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if indexPath.section == 1 {
             
+            guard let row = PriorityRow(rawValue: indexPath.row) else { return }
+            
+            switch row {
+            case .required:
+                
+                let bulletin = self.bulletin(for: .notification)
+                bulletin.priority = .required
+                self.bulletin = bulletin
+                bulletin.present()
+                
+            case .high:
+                
+                let bulletin = self.bulletin(for: .banner)
+                bulletin.priority = .high
+                self.bulletin = bulletin
+                bulletin.present()
+                
+            case .low:
+                
+                let bulletin = self.bulletin(for: .statusBar)
+                bulletin.priority = .low
+                self.bulletin = bulletin
+                bulletin.present()
+                
+            }
+            
+        }
+        else if indexPath.section == 2 {
+            
             guard let row = BackgroundEffectRow(rawValue: indexPath.row) else { return }
             
             switch row {
@@ -311,7 +364,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 3 {
             
             let vc = ObjcViewController()
             navigationController?.pushViewController(vc, animated: true)
