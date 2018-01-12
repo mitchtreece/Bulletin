@@ -132,18 +132,24 @@ bulletin.taptics.snapping = .impact(.medium)
 
 ## Priorities
 
-Bulletins are presented based on their respective `priority` level. There are 3 different priority levels a bulletin can have: **low**, **high**, & **required**.
+Bulletins are presented in a _LILO_ queue based on their `priority` levels. There are 3 different priority levels available: **low**, **high**, & **required**.
 
-While presenting a bulletin, If another with a lower priority is currently being displayed, it will be dismissed before the new bulletin's presentation is triggered. Bulletins with a `required` priority level will _always_ be presented immediately (dismissing any active bulletins if needed).
+While presenting a bulletin, If another with a lower priority is currently active, it will be dismissed before the new higher-priority bulletin is presented.
+
+Bulletins with a `required` priority level will _always_ be presented immediately (dismissing any active bulletins if needed).
 
 **(L)ow, (H)igh, (R)equired**
 
 ```
 [ ] + (L) = [L]
-[L] + (H) = [H] -- Lower priority dimissed
+[L] + (H) = [H] -- Lower priority dismissed
 [H] + (L) = [L, H]
 [L, R] + (H) = [L, H, R]
 [H, R, R] + (L) = [L, H, R, R]
+
+------------------------------
+(last)->->->->->->->->-(first)
+------------------------------
 ```
 
 By default, bulletins have a `low` priority level.

@@ -550,7 +550,7 @@ public class BulletinView: UIView {
      _Priority examples:_
      ```
      [ ] + (L) = [L]
-     [L] + (H) = [H] -- Lower priority dimissed
+     [L] + (H) = [H] -- Lower priority dismissed
      [H] + (L) = [L, H]
      [L, R] + (H) = [L, H, R]
      [H, R, R] + (L) = [L, H, R, R]
