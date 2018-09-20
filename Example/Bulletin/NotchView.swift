@@ -33,7 +33,7 @@ class NotchView: UIView {
         titleLabel.textAlignment = .center
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(UIScreen.main.notch!.height)
+            make.top.equalTo(UIScreen.main.topNotch!.size.height)
             make.left.bottom.right.equalTo(0)
         }
         
@@ -43,7 +43,7 @@ class NotchView: UIView {
         
         super.layoutSubviews()
         
-        let cornerRadii = CGSize(width: UIScreen.main.notch!.cornerRadius, height: UIScreen.main.notch!.cornerRadius)
+        let cornerRadii = CGSize(width: UIScreen.main.topNotch!.cornerRadius, height: UIScreen.main.topNotch!.cornerRadius)
         
         let mask = CAShapeLayer()
         mask.path = UIBezierPath(roundedRect: frame, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: cornerRadii).cgPath

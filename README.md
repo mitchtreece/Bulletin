@@ -1,11 +1,9 @@
 ![Bulletin](Resources/banner.png)
 
-[![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
-[![Platform](https://img.shields.io/cocoapods/p/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-![iOS](https://img.shields.io/badge/iOS-10,%2011-blue.svg)
-![iPhoneX](https://img.shields.io/badge/iPhone%20X-✔-brightgreen.svg)
-[![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
+[![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=for-the-badge)](http://cocoapods.org/pods/Bulletin)
+![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg?style=for-the-badge)
+![iOS](https://img.shields.io/badge/iOS-10--12-green.svg?style=for-the-badge)
+[![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=for-the-badge)](http://cocoapods.org/pods/Bulletin)
 
 ## Overview
 Bulletin is a customizable alert library that makes it incredibly easy to build highly-stylized alerts for your app.
@@ -150,31 +148,6 @@ func bulletinViewWillAppear(_ bulletin: BulletinView)
 func bulletinViewWillDisappear(_ bulletin: BulletinView)
 func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
 func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
-```
-
-## iPhone X
-
-Bulletin fully supports the new iPhone X! To help with the new safe content area's on the X, some useful extensions have been added to `UIDevice` & `UIScreen`:
-
-**UIDevice**
-```Swift
-var isPhoneX: Bool
-```
-
-**UIScreen**
-```Swift
-var displayFeatureInsets: UIEdgeInsets
-var cornerRadius: CGFloat
-var notch: UINotch?
-var homeGrabber: UIHomeGrabber?
-```
-
-Most of these are self-explanatory. However, two new classes: `UINotch` & `UIHomeGrabber` have been added, and are accessible on the current `UIScreen`. These new classes provide position & sizing information related to the new top-notch & bottom home-grabber on the iPhone X.
-
-By default, all of Bulletin's default style options now use `displayFeatureInsets` so bulletin insets will be set correctly on any device. You can also do this manually if you wish to customize a bulletin's insets:
-
-```swift
-bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: UIScreen.main.displayFeatureInsets.top + 20)
 ```
 
 ## SnapKit
