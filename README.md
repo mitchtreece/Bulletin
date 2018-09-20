@@ -1,11 +1,9 @@
 ![Bulletin](Resources/banner.png)
 
-[![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
-[![Platform](https://img.shields.io/cocoapods/p/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
-![iOS](https://img.shields.io/badge/iOS-10,%2011-blue.svg)
-![iPhoneX](https://img.shields.io/badge/iPhone%20X-✔-brightgreen.svg)
-[![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=flat)](http://cocoapods.org/pods/Bulletin)
+[![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=for-the-badge)](http://cocoapods.org/pods/Bulletin)
+![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg?style=for-the-badge)
+![iOS](https://img.shields.io/badge/iOS-10--12-green.svg?style=for-the-badge)
+[![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=for-the-badge)](http://cocoapods.org/pods/Bulletin)
 
 ## Overview
 Bulletin is a customizable alert library that makes it incredibly easy to build highly-stylized alerts for your app.
