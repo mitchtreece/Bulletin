@@ -8,6 +8,7 @@
 
 #import "ObjcViewController.h"
 #import "Bulletin_Example-Swift.h"
+
 @import Bulletin;
 
 @interface ObjcViewController ()
@@ -17,9 +18,7 @@
 @implementation ObjcViewController
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    
     return UIStatusBarStyleLightContent;
-    
 }
 
 - (void)viewDidLoad {
@@ -60,27 +59,16 @@
     BulletinView *bulletin = [BulletinView notification];
     [bulletin setPosition:kBulletinViewPositionBottom];
     [bulletin setBackgroundEffect:kBulletinViewBackgroundEffectDarkenMedium];
+    [bulletin setCornerRadius:18];
+    [bulletin setEdgeInsets:UIEdgeInsetsMake(0, 14, 24, 14)];
     [bulletin embedContent:view];
-    
-    if ([UIDevice currentDevice].isPhoneX) {
-        [bulletin setCornerRadius:18];
-        [bulletin setEdgeInsets:UIEdgeInsetsMake(0, 14, [UIScreen mainScreen].displayFeatureInsets.bottom + 4, 14)];
-    }
     
     [bulletin presentAfter:delay];
     
 }
 
 - (void)presentBulletin {
-    
     [self presentBulletinWithDelay:0];
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    
-    [super didReceiveMemoryWarning];
-    
 }
 
 @end

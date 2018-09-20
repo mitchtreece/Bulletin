@@ -97,7 +97,7 @@ internal class BulletinManager {
                 
         bulletinWindow = BulletinWindow()
         bulletinWindow!.backgroundColor = UIColor.clear
-        bulletinWindow!.windowLevel = bulletin.level.rawValue
+        bulletinWindow!.windowLevel = UIWindow.Level(rawValue: bulletin.level.rawValue)
         bulletinWindow!.isHidden = false
         
         if let keyboardWindow = UIApplication.shared.currentKeyboardWindow, bulletin.level == .keyboard {

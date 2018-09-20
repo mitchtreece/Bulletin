@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Espresso
 import SnapKit
 
 public extension BulletinView {

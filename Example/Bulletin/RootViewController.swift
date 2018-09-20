@@ -84,7 +84,7 @@ class RootViewController: UIViewController {
                 view = UIView()
                 view.backgroundColor = UIColor.groupTableViewBackground
                 
-                let labelWidth = ((UIScreen.main.bounds.width - UIScreen.main.notch!.width) / 2)
+                let labelWidth = ((UIScreen.main.bounds.width - UIScreen.main.topNotch!.size.width) / 2)
                 
                 let leftLabel = UILabel()
                 leftLabel.backgroundColor = UIColor.clear
@@ -157,7 +157,7 @@ class RootViewController: UIViewController {
             let height = ((UIApplication.shared.statusBarFrame.height + 44) - 14)
             
             bulletin = BulletinView.banner()
-            bulletin.style.edgeInsets = UIEdgeInsets(horizontal: UIScreen.main.notch!.frame.origin.x, vertical: 0)
+            bulletin.style.edgeInsets = UIEdgeInsets(horizontal: UIScreen.main.topNotch!.frame.origin.x, vertical: 0)
             bulletin.embed(content: view, usingStrictHeight: height)
             
         }

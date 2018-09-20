@@ -33,7 +33,7 @@ class HudView: UIView {
             make.edges.equalTo(0)
         }
         
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { (make) in
             make.edges.equalTo(self).inset(20)

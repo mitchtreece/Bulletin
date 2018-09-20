@@ -82,7 +82,7 @@ public class StyleSettings {
         case darken(alpha: CGFloat)
         
         /// Adds a blur overlay to the view's background with a given style.
-        case blur(style: UIBlurEffectStyle)
+        case blur(style: UIBlurEffect.Style)
         
     }
     
@@ -205,10 +205,10 @@ public class TapticSettings {
         case none
         
         /// A notification taptic with a given feedback type.
-        case notification(UINotificationFeedbackType)
+        case notification(UINotificationFeedbackGenerator.FeedbackType)
         
         /// An impact taptic with a given feedback style.
-        case impact(UIImpactFeedbackStyle)
+        case impact(UIImpactFeedbackGenerator.FeedbackStyle)
         
         /// A selection changed taptic.
         case selectionChanged
@@ -360,7 +360,7 @@ public class BulletinView: UIView {
             }
             
             do {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
                 try AVAudioSession.sharedInstance().setActive(true)
                 soundEffectPlayer = try? AVAudioPlayer(contentsOf: url)
                 soundEffectPlayer?.prepareToPlay()
@@ -441,7 +441,7 @@ public class BulletinView: UIView {
         layer.addSublayer(shadowLayer)
         
         shadowMask = CAShapeLayer()
-        shadowMask.fillRule = kCAFillRuleEvenOdd
+        shadowMask.fillRule = CAShapeLayerFillRule.evenOdd
         
         contentView = UIView()
         contentView.backgroundColor = UIColor.clear
