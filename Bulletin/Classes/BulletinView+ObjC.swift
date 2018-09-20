@@ -70,9 +70,7 @@ public extension BulletinView /* ObjC */ {
     @available(swift 1000)
     @objc(setEdgeInsets:)
     public func set(edgeInsets: UIEdgeInsets) {
-        
         self.style.edgeInsets = edgeInsets
-        
     }
     
     /**
@@ -115,9 +113,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     public func present() {
-        
         self.present(after: 0)
-        
     }
     
     /**
@@ -127,9 +123,7 @@ public extension BulletinView /* ObjC */ {
     @available(swift 1000)
     @objc(embedContent:)
     public func embed(content: UIView) {
-        
         self.embed(content: content, usingStrictHeight: nil)
-        
     }
     
     /**
@@ -140,9 +134,7 @@ public extension BulletinView /* ObjC */ {
     @available(swift 1000)
     @objc(embedContent:usingStrictHeight:)
     public func embed(content: UIView, usingStrictHeight height: CGFloat) {
-        
         self.embed(content: content, usingStrictHeight: height)
-        
     }
     
 }

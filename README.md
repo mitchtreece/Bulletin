@@ -152,31 +152,6 @@ func bulletinViewWasAutomaticallyDismissed(_ bulletin: BulletinView)
 func bulletinViewWasInteractivelyDismissed(_ bulletin: BulletinView)
 ```
 
-## iPhone X
-
-Bulletin fully supports the new iPhone X! To help with the new safe content area's on the X, some useful extensions have been added to `UIDevice` & `UIScreen`:
-
-**UIDevice**
-```Swift
-var isPhoneX: Bool
-```
-
-**UIScreen**
-```Swift
-var displayFeatureInsets: UIEdgeInsets
-var cornerRadius: CGFloat
-var notch: UINotch?
-var homeGrabber: UIHomeGrabber?
-```
-
-Most of these are self-explanatory. However, two new classes: `UINotch` & `UIHomeGrabber` have been added, and are accessible on the current `UIScreen`. These new classes provide position & sizing information related to the new top-notch & bottom home-grabber on the iPhone X.
-
-By default, all of Bulletin's default style options now use `displayFeatureInsets` so bulletin insets will be set correctly on any device. You can also do this manually if you wish to customize a bulletin's insets:
-
-```swift
-bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8, vertical: UIScreen.main.displayFeatureInsets.top + 20)
-```
-
 ## SnapKit
 
 [SnapKit](http://snapkit.io) is a wonderful library that helps ease the pain of working with programatic layout constraints. I use it daily, and you should too! Bulletin provides basic SnapKit integration via a specialized `snp_embed()` function that takes a SnapKit `ConstraintItem` instead of a strict height.

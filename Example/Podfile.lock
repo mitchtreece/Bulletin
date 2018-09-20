@@ -1,19 +1,28 @@
 PODS:
-  - Bulletin (1.1.0):
+  - Bulletin (1.2.3):
+    - Espresso (~> 1.1)
     - SnapKit (~> 4.0.0)
-  - SnapKit (4.0.0)
+  - Espresso (1.1.0):
+    - SnapKit (~> 4.0.0)
+  - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - Bulletin (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Espresso
+    - SnapKit
 
 EXTERNAL SOURCES:
   Bulletin:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Bulletin: f0dc0bf9285e060219c0adcecf043f5f58c49f90
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Bulletin: 55fffee446f9172359a35470fec24494a3d686e4
+  Espresso: 6fbfc5b6b57ea004aa86000e2acb9f042597e47a
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
 PODFILE CHECKSUM: 86f999a8d23261e57318875ed3a5aad5cd1bb02d
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3
