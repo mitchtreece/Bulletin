@@ -1,10 +1,11 @@
 PODS:
-  - Bulletin (1.2.3):
-    - Espresso (~> 1.1)
-    - SnapKit (~> 4.0.0)
-  - Espresso (1.1.0):
-    - SnapKit (~> 4.0.0)
-  - SnapKit (4.0.1)
+  - Bulletin (1.2.4):
+    - Espresso (~> 2.1)
+  - Espresso (2.1.0):
+    - Espresso/Core (= 2.1.0)
+  - Espresso/Core (2.1.0):
+    - SnapKit (~> 4.0)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - Bulletin (from `../`)
@@ -19,10 +20,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Bulletin: ae74a0ab2f0ecc3937036d9855dd9b64d5e330cd
-  Espresso: 6fbfc5b6b57ea004aa86000e2acb9f042597e47a
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  Bulletin: bfb1ea4ec65e6275302c7be3e09d76b6712ef0a3
+  Espresso: 4f53e8d9d60efb0973a7a950645efa88d4cff3b6
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 86f999a8d23261e57318875ed3a5aad5cd1bb02d
+PODFILE CHECKSUM: 7b587408b5ef195c377f0ad743c9ce654c0ec3b0
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

@@ -1,11 +1,11 @@
 use_frameworks!
 
 target 'Bulletin_Example' do
+
   pod 'Bulletin', :path => '../'
 
   target 'Bulletin_Tests' do
     inherit! :search_paths
-
-    
   end
+
 end

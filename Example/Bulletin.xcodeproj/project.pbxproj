@@ -315,7 +315,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Bulletin_Example/Pods-Bulletin_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Bulletin_Example/Pods-Bulletin_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bulletin/Bulletin.framework",
 				"${BUILT_PRODUCTS_DIR}/Espresso/Espresso.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -328,7 +328,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bulletin_Example/Pods-Bulletin_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bulletin_Example/Pods-Bulletin_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D5F2825E879E7C5790281DD9 /* [CP] Check Pods Manifest.lock */ = {

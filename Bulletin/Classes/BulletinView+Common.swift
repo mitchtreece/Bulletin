@@ -116,8 +116,10 @@ public extension BulletinView {
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.isStretchingEnabled = false
         bulletin.style.isAnimatedTouchEnabled = false
-        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8,
-                                                 vertical: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8))
+        bulletin.style.edgeInsets = UIEdgeInsets(
+            horizontal: 8,
+            vertical: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isDeviceModern ? 4 : 8)
+        )
         
         return bulletin
         

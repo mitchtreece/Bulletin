@@ -105,10 +105,12 @@ public class StyleSettings {
     /**
      The bulletin's insets from the screen edges. By default, this takes into account display features (top notch, home grabber) if applicable.
      */
-    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: UIScreen.main.displayFeatureInsets.top + 4,
-                                                       left: UIScreen.main.displayFeatureInsets.left + 8,
-                                                       bottom: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8),
-                                                       right: UIScreen.main.displayFeatureInsets.right + 8)
+    public var edgeInsets: UIEdgeInsets = UIEdgeInsets(
+        top: UIScreen.main.displayFeatureInsets.top + 4,
+        left: UIScreen.main.displayFeatureInsets.left + 8,
+        bottom: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isDeviceModern ? 4 : 8),
+        right: UIScreen.main.displayFeatureInsets.right + 8
+    )
     
     /**
      The set of corners to apply a rounded corner radius to.
