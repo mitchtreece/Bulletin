@@ -1,8 +1,8 @@
 ![Bulletin](Resources/banner.png)
 
 [![Version](https://img.shields.io/cocoapods/v/Bulletin.svg?style=for-the-badge)](http://cocoapods.org/pods/Bulletin)
-![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg?style=for-the-badge)
-![iOS](https://img.shields.io/badge/iOS-10--12-green.svg?style=for-the-badge)
+![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=for-the-badge)
+![iOS](https://img.shields.io/badge/iOS-12+-green.svg?style=for-the-badge)
 [![License](https://img.shields.io/cocoapods/l/Bulletin.svg?style=for-the-badge)](http://cocoapods.org/pods/Bulletin)
 
 ## Overview
@@ -28,6 +28,10 @@ Bulletin is a customizable alert library that makes it incredibly easy to build 
 </table>
 
 ## Installation
+
+- **Swift 4**: Version **<= 1.2.4**
+- **Swift 5**: Version **>= 1.3.0**
+
 ### CocoaPods
 Bulletin is integrated with CocoaPods!
 

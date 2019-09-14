@@ -16,7 +16,7 @@ public extension BulletinView {
      A notification styled bulletin.
      - returns: A `BulletinView` instance.
      */
-    @objc public static func notification() -> BulletinView {
+    @objc static func notification() -> BulletinView {
         
         let bulletin = BulletinView()
         bulletin.level = .statusBar
@@ -29,7 +29,7 @@ public extension BulletinView {
      - parameter sticky: Boolean indicating whether the bulletin should be automatically dismissed. Defaults to false.
      - returns: A `BulletinView` instance.
      */
-    @objc public static func banner(sticky: Bool = false) -> BulletinView {
+    @objc static func banner(sticky: Bool = false) -> BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .top
@@ -51,7 +51,7 @@ public extension BulletinView {
      A status bar styled bulletin. This is usually used for presenting a "toast" over the status bar.
      - returns: A `BulletinView` instance.
      */
-    @objc public static func statusBar() -> BulletinView {
+    @objc static func statusBar() -> BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .top
@@ -73,7 +73,7 @@ public extension BulletinView {
      An alert styled bulletin.
      - returns: A `BulletinView` instance.
      */
-    @objc public static func alert() -> BulletinView {
+    @objc static func alert() -> BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .center
@@ -90,7 +90,7 @@ public extension BulletinView {
      A HUD styled bulletin.
      - returns: A `BulletinView` instance.
      */
-    @objc public static func hud() -> BulletinView {
+    @objc static func hud() -> BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .center
@@ -108,7 +108,7 @@ public extension BulletinView {
      A sheet styled bulletin.
      - returns: A `BulletinView` instance.
      */
-    @objc public static func sheet() -> BulletinView {
+    @objc static func sheet() -> BulletinView {
         
         let bulletin = BulletinView()
         bulletin.position = .bottom
@@ -116,8 +116,10 @@ public extension BulletinView {
         bulletin.style.backgroundEffect = .darken(alpha: 0.5)
         bulletin.style.isStretchingEnabled = false
         bulletin.style.isAnimatedTouchEnabled = false
-        bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 8,
-                                                 vertical: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isPhoneX ? 4 : 8))
+        bulletin.style.edgeInsets = UIEdgeInsets(
+            horizontal: 8,
+            vertical: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isModern ? 4 : 8)
+        )
         
         return bulletin
         

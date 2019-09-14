@@ -42,7 +42,7 @@ class SheetView: UIView {
         bottomButton.setTitle("Cancel", for: .normal)
         bottomButton.setTitleColor(#colorLiteral(red: 0.2251080871, green: 0.5581823587, blue: 0.9731199145, alpha: 1), for: .normal)
         bottomButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        bottomButton.layer.cornerRadius = UIDevice.current.isPhoneX ? 18 : 14
+        bottomButton.layer.cornerRadius = UIDevice.current.isModern ? 18 : 14
         bottomButton.layer.masksToBounds = true
         bottomButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         addSubview(bottomButton)
@@ -57,7 +57,7 @@ class SheetView: UIView {
         topButton.setTitle("Okay", for: .normal)
         topButton.setTitleColor(#colorLiteral(red: 0.2251080871, green: 0.5581823587, blue: 0.9731199145, alpha: 1), for: .normal)
         topButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        topButton.layer.cornerRadius = UIDevice.current.isPhoneX ? 18 : 14
+        topButton.layer.cornerRadius = UIDevice.current.isModern ? 18 : 14
         topButton.layer.masksToBounds = true
         topButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         addSubview(topButton)
@@ -69,7 +69,7 @@ class SheetView: UIView {
         
         mainContentView = UIView()
         mainContentView.backgroundColor = UIColor.white
-        mainContentView.layer.cornerRadius = UIDevice.current.isPhoneX ? 18 : 14
+        mainContentView.layer.cornerRadius = UIDevice.current.isModern ? 18 : 14
         mainContentView.layer.masksToBounds = true
         addSubview(mainContentView)
         mainContentView.snp.makeConstraints { (make) in

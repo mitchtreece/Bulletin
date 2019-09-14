@@ -17,7 +17,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setPosition:)
-    public func set(position: Int) {
+    func set(position: Int) {
         
         switch position {
         case 0: self.position = .top
@@ -35,7 +35,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setDuration:)
-    public func set(duration: TimeInterval) {
+    func set(duration: TimeInterval) {
         
         if duration <= 0 {
             self.duration = .forever
@@ -53,7 +53,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setLevel:)
-    public func set(level: Int) {
+    func set(level: Int) {
         
         switch level {
         case 0: self.level = .default
@@ -69,7 +69,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setEdgeInsets:)
-    public func set(edgeInsets: UIEdgeInsets) {
+    func set(edgeInsets: UIEdgeInsets) {
         self.style.edgeInsets = edgeInsets
     }
     
@@ -78,7 +78,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setCornerRadius:)
-    public func set(cornerRadius: CGFloat) {
+    func set(cornerRadius: CGFloat) {
         
         self.style.roundedCorners = [.allCorners]
         self.style.roundedCornerRadius = cornerRadius
@@ -93,7 +93,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(setBackgroundEffect:)
-    public func set(backgroundEffect: Int) {
+    func set(backgroundEffect: Int) {
         
         switch backgroundEffect {
         case 0: self.style.backgroundEffect = .none
@@ -112,7 +112,7 @@ public extension BulletinView /* ObjC */ {
      Presents the bulletin.
      */
     @available(swift 1000)
-    public func present() {
+    func present() {
         self.present(after: 0)
     }
     
@@ -122,7 +122,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(embedContent:)
-    public func embed(content: UIView) {
+    func embed(content: UIView) {
         self.embed(content: content, usingStrictHeight: nil)
     }
     
@@ -133,7 +133,7 @@ public extension BulletinView /* ObjC */ {
      */
     @available(swift 1000)
     @objc(embedContent:usingStrictHeight:)
-    public func embed(content: UIView, usingStrictHeight height: CGFloat) {
+    func embed(content: UIView, usingStrictHeight height: CGFloat) {
         self.embed(content: content, usingStrictHeight: height)
     }
     

@@ -1,25 +1,36 @@
 ![Espresso](Resources/banner.png)
 
 [![Version](https://img.shields.io/cocoapods/v/Espresso.svg?style=for-the-badge)](http://cocoapods.org/pods/Espresso)
-![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg?style=for-the-badge)
-![iOS](https://img.shields.io/badge/iOS-10--12-green.svg?style=for-the-badge)
+![Swift](https://img.shields.io/badge/Swift-5-orange.svg?style=for-the-badge)
+![iOS](https://img.shields.io/badge/iOS-11--12-green.svg?style=for-the-badge)
 [![License](https://img.shields.io/cocoapods/l/Espresso.svg?style=for-the-badge)](http://cocoapods.org/pods/Espresso)
 
 ## Overview
 Espresso is a Swift convenience library for iOS. Everything is better with a little coffee. ☕️
 
 ## Installation
+
+- **Swift 4**: Version **<= 2.1.1**<br>
+- **Swift 5**: Version **>= 2.2.0**
+
 ### CocoaPods
 Espresso is integrated with CocoaPods!
 
 1. Add the following to your `Podfile`:
 ```
 use_frameworks!
-pod 'Espresso'
+pod 'Espresso', '~> 2.2.0'
 ```
 2. In your project directory, run `pod install`
 3. Import the `Espresso` module wherever you need it
 4. Profit
+
+Espresso is broken down into several sub-specs:
+- `Core`: The default spec. Includes common `Foundation` & `UIKit` classes / helpers.
+- `Mvvm`: MVVM-architecture related classes + helpers. Includes the `Core` spec.
+- `RxMvvm`: MVVM / Rx classes + helpers. Includes the `Mvvm` & `Core` specs.
+- `DI`: Dependency injection helpers. Includes the `Core` spec.
+- `All`: All of the above specs.
 
 ### Manually
 You can also manually add the source files to your project.
@@ -29,7 +40,6 @@ You can also manually add the source files to your project.
 3. Profit
 
 ## Espresso
-
 Espresso adds a bunch of useful features and additions to both the **Foundation** & **UIKit** layers used during iOS application development.
 Too many components have been added to cover in this *readme*. However, the code is well documented and easy to understand.
 
@@ -38,8 +48,13 @@ Some of the more interesting things include:
 - `UITransition` system for easy custom `UIViewController` transitions
 - `UIViewController` & `UINavigationController` styling system
 - `UIScreen` extensions + display features
+- `Coordinator` navigation implementation
+- `MVVM` & `Rx` classes + helpers
+- Dependency injection helpers
 - Device identification & info
 - Type conversion helpers
+- User authentication helpers
+- Digest hash helpers
 - _+ much more!_
 
 #### UIAnimation
@@ -78,10 +93,11 @@ UIAnimation(.spring(damping: 0.9, velocity: CGVector(dx: 0.25, dy: 0)), {
 
 The following timing curves are currently supported:
 
-- simple
-- cubicBezier
-- spring
-- custom
+- `simple`
+- `cubicBezier`
+- `spring`
+- `material`
+- `custom`
 
 `UIAnimation` also supports animation _chaining_. This let's you easily define a series of animations to run in succession (similar to a key-frame animation) using a promise-like syntax.
 
@@ -172,6 +188,37 @@ The following transitions are included with Espresso:
 - `UISwapTransition`
 - `UIPushBackTransition`
 
-## Contributing
+#### User Authentication
+The `UserAuthenticator` class helps with authenticating a user via Touch ID, Face ID, or a password.
+An appropriate authentication type will be chosen automatically (i.e. devices that support Face ID will prefer Face ID.
+Devices with Touch ID will use Touch ID). If Face ID & Touch ID are unavailable, password authentication will be used.
 
+```
+UserAuthenticator.authenticate(withReason: "The app needs to authenticate you.") { (success, error) in
+    print("Authenticated: \(success)")
+}
+```
+
+**NOTE:** `NSFaceIDUsageDescription` key _must_ be added to your **Info.plist** if you intend to authenticate via Face ID.
+
+#### Digest Hash
+Hashing extensions are available on both `Data` & `String`:
+
+```
+let data = Data()
+let hashedData = data.hashed(using: .md5)
+
+let string = "Hello, world!"
+let hashedString = string.hashed(using: .md5)
+```
+
+The following hash types are included with Espresso:
+- `md5`
+- `sha1`
+- `sha224`
+- `sha256`
+- `sha384`
+- `sha512`
+
+## Contributing
 Pull-requests are more than welcome. Bug fix? Feature? Open a PR and we'll get it merged in!
