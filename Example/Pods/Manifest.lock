@@ -1,5 +1,5 @@
 PODS:
-  - Bulletin (1.2.4):
+  - Bulletin (1.3.0):
     - Espresso (~> 2.2.0)
   - Director (1.0.3):
     - Director/Core (= 1.0.3)
@@ -25,7 +25,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Bulletin: c02f5c213d3ec0d67fb2b3c357f756f7b2dc50d7
+  Bulletin: eceb668260e34931808a2f1cea1aaf3f4dfa3fa4
   Director: ea4eb01b2271d7d5a16f68ed8a5a9e671030ece9
   Espresso: 632bfbf44a4729d5e91e4817e3bef10b0bb3db9a
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb

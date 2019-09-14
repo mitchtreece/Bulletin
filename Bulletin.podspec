@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'Bulletin'
-  s.version          = '1.2.4'
+  s.version          = '1.3.0'
   s.summary          = 'Customizable alert library for Swift.'
 
   s.description      = <<-DESC
