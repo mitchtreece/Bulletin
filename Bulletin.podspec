@@ -15,11 +15,11 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/mitchtreece/Bulletin.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/MitchTreece'
 
-  s.swift_version = '4.2'
-  s.ios.deployment_target = '10.0'
+  s.swift_version = '5'
+  s.ios.deployment_target = '12.0'
   s.ios.public_header_files = 'Bulletin/Classes/**/*.h'
   s.source_files = 'Bulletin/Classes/**/*'
 
-  s.dependency 'Espresso', '~> 2.1'
+  s.dependency 'Espresso', '~> 2.2.0'
 
 end

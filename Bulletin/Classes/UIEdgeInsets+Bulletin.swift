@@ -9,7 +9,7 @@ import UIKit
 
 public extension UIEdgeInsets {
     
-    public init(horizontal: CGFloat, vertical: CGFloat) {
+    init(horizontal: CGFloat, vertical: CGFloat) {
         self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
     }
     

@@ -46,7 +46,7 @@ class RootViewController: UIViewController {
             bulletin.style.shadowRadius = 10
             bulletin.style.shadowAlpha = 0.3
             
-            if UIDevice.current.isDeviceModern {
+            if UIDevice.current.isModern {
                 bulletin.style.roundedCornerRadius = 18
                 bulletin.style.edgeInsets = UIEdgeInsets(horizontal: 14, vertical: UIScreen.main.displayFeatureInsets.top + 4)
             }
@@ -69,7 +69,7 @@ class RootViewController: UIViewController {
             
             var view: UIView!
             
-            if !UIDevice.current.isDeviceModern {
+            if !UIDevice.current.isModern {
                 
                 view = UILabel()
                 view.backgroundColor = UIColor.groupTableViewBackground
@@ -140,7 +140,7 @@ class RootViewController: UIViewController {
             view.delegate = self
 
             var bottomInset = UIScreen.main.displayFeatureInsets.bottom + 4
-            if !UIDevice.current.isDeviceModern {
+            if !UIDevice.current.isModern {
                 bottomInset += 4
             }
             
@@ -204,7 +204,7 @@ extension RootViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-        case 0: return UIDevice.current.isDeviceModern ? 7 : 6
+        case 0: return UIDevice.current.isModern ? 7 : 6
         case 1: return 3
         case 2: return 1
         default: return 0
