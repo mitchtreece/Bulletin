@@ -15,11 +15,15 @@ public extension UINavigationController {
      - Parameter vc: The view controller to present.
      - Parameter transition: The transition to present the view controller with.
      */
-    public func pushViewController(_ vc: UIViewController, with transition: UITransition) {
+    func pushViewController(_ vc: UIViewController, with transition: UITransition) {
+        
+        let oldDelegate = self.delegate
         
         vc.transition = transition
         self.delegate = vc.transition
+        
         self.pushViewController(vc, animated: true)
+        self.delegate = oldDelegate
         
     }
     

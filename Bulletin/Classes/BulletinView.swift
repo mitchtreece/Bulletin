@@ -108,7 +108,7 @@ public class StyleSettings {
     public var edgeInsets: UIEdgeInsets = UIEdgeInsets(
         top: UIScreen.main.displayFeatureInsets.top + 4,
         left: UIScreen.main.displayFeatureInsets.left + 8,
-        bottom: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isDeviceModern ? 4 : 8),
+        bottom: UIScreen.main.displayFeatureInsets.bottom + (UIDevice.current.isModern ? 4 : 8),
         right: UIScreen.main.displayFeatureInsets.right + 8
     )
     

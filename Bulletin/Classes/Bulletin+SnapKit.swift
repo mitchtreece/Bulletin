@@ -16,7 +16,7 @@ public extension BulletinView {
      - parameter content: The content view to embed.
      - parameter constraint: The height constraint to use.
      */
-    public func snp_embed(content: UIView, usingStrictHeightConstraint constraint: ConstraintItem) {
+    func snp_embed(content: UIView, usingStrictHeightConstraint constraint: ConstraintItem) {
         
         contentView.addSubview(content)
         content.snp.makeConstraints { (make) in
