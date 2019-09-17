@@ -24,7 +24,7 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = UIColor.white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-
+        
     }
     
     fileprivate func bulletin(for row: BulletinRow) -> BulletinView {
