@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Espresso
 import AVFoundation
 import SnapKit
 
@@ -100,14 +101,15 @@ internal class BulletinManager {
         bulletinWindow!.windowLevel = UIWindow.Level(rawValue: bulletin.level.rawValue)
         bulletinWindow!.isHidden = false
         
-        if let keyboardWindow = UIApplication.shared.currentKeyboardWindow, bulletin.level == .keyboard {
+        if let keyboardWindow = UIApplication.shared.keyboardWindow,
+            bulletin.level == .keyboard {
             keyboardWindow.addSubview(bulletinWindow!)
         }
         
         bulletinViewController = BulletinViewController()
         bulletinViewController!.bulletin = bulletin
-        bulletinViewController!.previousStatusBarStyle = UIApplication.shared.currentStatusBarAppearance.style
-        bulletinViewController!.isStatusBarHidden = UIApplication.shared.currentStatusBarAppearance.hidden
+        bulletinViewController!.previousStatusBarStyle = UIApplication.shared.statusBarAppearance.style
+        bulletinViewController!.isStatusBarHidden = UIApplication.shared.statusBarAppearance.hidden
         bulletinWindow!.rootViewController = bulletinViewController
         bulletinViewController!.animateIn()
         
